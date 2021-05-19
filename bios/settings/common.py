@@ -18,7 +18,7 @@ IS_PRODUCTION = ENVIRONMENT == "production"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+PROJECT_BASE = f'{BASE_DIR}/bios'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -31,10 +31,14 @@ DEPENDENCIES_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'shop.apps.StoreConfig',
 ]
 
 PROJECT_APPS = [
     'main',
+    'shop',
+    'cms',
+    'certificates',
 ]
 
 ADDONS = [
