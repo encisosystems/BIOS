@@ -44,45 +44,6 @@ Django 3.1.1 + Postgres 11 + Dokku config (Production Ready)
 └── requirements.txt (Python dependencies to be installed)
 ```
 
-### How to install the template ###
-
-Clone the repository, and update your origin url: 
-```
-git clone https://github.com/altixco/django-postgres-dokku bios
-cd bios
-```
-
-Merge the addons required by your project (Optional):
-```
-git merge origin/rest
-git merge origin/webpack
-git merge origin/push-notifications
-```
-
-Rename your project files and directorys:
-```
-make name=bios init
-```
-> Info: Make is required, for mac run `brew install make`
-
-> After this command you can already delete the init command inside the `Makefile` 
-
-The command before will remove the `.git` folder so you will have to initialize it again:
-```
-git init
-git remote add origin <repository-url>
-```
-
-### How to run the project ###
-
-The project use docker, so just run:
-
-```
-docker-compose up
-```
-
-> If it's first time, the images will be created. Sometimes the project doesn't run at first time because the init of postgres, just run again `docker-compose up` and it will work.
-
 *Your app will run in url `localhost:8000`*
 
 To recreate the docker images after dependencies changes run:
