@@ -31,6 +31,7 @@ DEPENDENCIES_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'shop.apps.StoreConfig',
 ]
 
 PROJECT_APPS = [
