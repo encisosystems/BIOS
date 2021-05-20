@@ -44,7 +44,6 @@ Django 3.1.1 + Postgres 11 + Dokku config (Production Ready)
 └── requirements.txt (Python dependencies to be installed)
 ```
 
-
 *Your app will run in url `localhost:8000`*
 
 To recreate the docker images after dependencies changes run:
