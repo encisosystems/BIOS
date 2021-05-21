@@ -16,3 +16,20 @@ class Image(models.Model):
     alt = models.CharField(max_length=60)
     image = models.FileField(upload_to='images/')
 
+class Template(models.Model):
+    icon = models.ImageField(
+        upload_to='cms/icons',
+    )
+    logo = models.ImageField(
+        upload_to='cms/logos',
+    )
+    header_title = models.CharField(
+        max_length=50
+    )
+
+    def __str__(self):
+        return f'{self.header_title}'
+
+    class Meta:
+        verbose_name = 'Template'
+        verbose_name_plural = 'Templates'
