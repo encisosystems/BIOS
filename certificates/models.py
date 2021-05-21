@@ -15,8 +15,7 @@ class Concept_type(models.Model):
         verbose_name_plural="Concept_type"
 
     def __str__(self):
-        return self.nombre
-        
+        return self.nombre        
         
 class Manipulator(models.Model):
     
@@ -27,8 +26,6 @@ class Manipulator(models.Model):
     class Meta:
         verbose_name = 'Manipulator'
         verbose_name_plural = 'Manipulators'
-    
-   
 
 class Company_customer(models.Model):
 
@@ -58,7 +55,6 @@ class Company_customer(models.Model):
     class Meta:
         verbose_name = 'Company Customer'
         verbose_name_plural = 'Company Customers'
-
 
 class capacity_certificate(models.Model):
     
