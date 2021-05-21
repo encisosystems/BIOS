@@ -2,11 +2,21 @@ from django.db import models
 
 # Create your models here.
 
-class footer(models.Model):
-    company = models.CharField(max_length=30)
-    year = models.CharField(max_length=30)
-    phone = models.CharField(max_length=30)
-    mail = models.CharField(max_length=30)
+class FooterDescription(models.Model):
+    description = models.TextField(
+        blank = True,
+        null = True
+    )
+    type_desc = models.CharField(
+        blank = True,
+        null = True
+    )
+    value = models.CharField(
+        blank = True,
+        null = True
+    )
+
+class Menu(models.Model):
 
 class Carrousel(models.Model):
     title = models.CharField(max_length=60)    
