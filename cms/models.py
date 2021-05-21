@@ -4,19 +4,23 @@ from django.db import models
 
 class FooterDescription(models.Model):
     description = models.TextField(
+        max_length=200,
         blank = True,
         null = True
     )
     type_desc = models.CharField(
+        max_length=60,
         blank = True,
         null = True
     )
     value = models.CharField(
+        max_length=60,
         blank = True,
         null = True
     )
 
 class Menu(models.Model):
+    page= models.CharField(max_length=60)
 
 class Carrousel(models.Model):
     title = models.CharField(max_length=60)    
