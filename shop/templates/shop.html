@@ -172,9 +172,8 @@
               
               <div class="product-list">
                   <div class="row">
-                    
+                    {% for product in products%}
                       <div class="col-lg-4 col-sm-6">
-                        {% for product in products%}
                           <div class="product-item">
                               <div class="pi-pic">
                                   <img src="{{product.imageURL}}" alt="">
@@ -199,9 +198,8 @@
                                   </div>
                               </div>
                           </div>
-                          {% endfor %}
                       </div>
-                      
+                      {% endfor %}
                       
                       <!-- 
                       <div class="col-lg-4 col-sm-6">
