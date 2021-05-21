@@ -32,7 +32,7 @@
                     <div></div>
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="{% url 'home' %}">
                                 <img src="{% static 'img/logo.png' %}" alt="">
                             </a>
                         </div>
@@ -46,7 +46,7 @@
                                 </a>
                             </li>
                             <li class="cart-icon">
-                                <a href="#">
+                                <a href="{% url 'cart' %}">
                                     <i class="icon_bag_alt"></i>
                                     <span>3</span>
                                 </a>
@@ -61,18 +61,15 @@
             <div class="container">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="./home.html">Inicio</a></li>
-                        <li><a href="./shop.html">Tienda</a></li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contacto</a></li>
+                        <li class="active"><a href="{% url 'home' %}">Inicio</a></li>
+                        <li><a href="{% url 'shop' %}">Tienda</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li><a href="#">Contacto</a></li>
                         <li><a href="#">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="./blog-details.html">Blog Details</a></li>
-                                <li><a href="./shopping-cart.html">Carrito de compras</a></li>
-                                <li><a href="./check-out.html">Checkout</a></li>
-                                <li><a href="./faq.html">Faq</a></li>
-                                <li><a href="./register.html">Registro</a></li>
-                                <li><a href="./login.html">Login</a></li>
+                                <li><a href="{% url 'blog-details' %}">Blog Details</a></li>
+                                <li><a href="{% url 'cart' %}">Carrito de compras</a></li>
+                                <li><a href="{% url 'checkout' %}">Checkout</a></li>
                             </ul>
                         </li>
                     </ul>
