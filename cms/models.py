@@ -47,3 +47,31 @@ class Template(models.Model):
     class Meta:
         verbose_name = 'Template'
         verbose_name_plural = 'Templates'
+
+class Content(models.Model):
+    """Model Content"""
+    title = models.CharField(
+        null=False, blank=False, max_length=50,
+        verbose_name="Title",
+        help_text="Title")
+
+    class Meta:
+        ordering = ["id"]
+        verbose_name = "Content"
+        verbose_name_plural = "Contents"
+
+class Page(models.Model):
+    """Model Page"""
+    title = models.CharField(
+        null=False, blank=False, max_length=50,
+        verbose_name="Title",
+        help_text="Title")
+    slug = models.CharField(
+        null=False, blank=False, max_length=100,
+        verbose_name="Slug",
+        help_text="Slug")
+
+    class Meta:
+        ordering = ["id"]
+        verbose_name = "Page"
+        verbose_name_plural = "Pages"
