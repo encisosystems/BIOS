@@ -78,7 +78,7 @@ class Official(models.Model):
         return self.person.name
 
     class Meta:
-        verbose_name = 'FUncionario'
+        verbose_name = 'Funcionario'
         verbose_name_plural = 'Funcionarios'
 
 class Doctor(models.Model):
