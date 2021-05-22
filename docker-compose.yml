@@ -22,3 +22,8 @@ services:
     container_name: bios-postgres
     environment: 
       POSTGRES_PASSWORD: postgres
+
+  ngnx:
+    image: ngnx:alpine
+    container_name: ngnx
+
