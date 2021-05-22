@@ -101,6 +101,6 @@ class Assistance(models.Model):
     assistance = models.BigIntegerField()
     aproved_status = models.BooleanField()
 
-class result(models.Model):
+class Result(models.Model):
     type_of_exam = models.BigIntegerField()
     result = models.CharField(max_length=60, blank=True,)
