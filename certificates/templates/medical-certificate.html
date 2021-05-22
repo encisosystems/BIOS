@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% load static %} 
+
+{% block title %}
+    Certificado Medico-BIOS
+{% endblock title %}
+
+{% block content %}
+
+    <div class="container border border-primary mt-3 rounded">
+        <div class="row justify-content-center" style="background-color: #DAEDFB;">
+            <div class="col-sm-5 logo">
+                <img src="{% static 'img/logo.png' %}" width="200px"/>
+            </div>
+            <div class="col-sm-7 ">
+                <h4 class="justify-content-center">Certificado Médico</h4>
+                <h4>Manipulador de Alimentos</h4>
+                <div class="border border-primary text-center rounded" style="background-color: #ffffff;">
+                    No. {{consecutive_number}}
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="d-flex flex-column mb-10 mb-md-0">
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="mr-15 font-weight-bold">Empresa:</span>
+                        <span class="text-right">Company name</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="mr-15 font-weight-bold">Fecha:</span>
+                        <span class="text-right">18 / 11 / 20</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-6">
+                    <div class="d-flex flex-column mb-10 mb-md-0">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="mr-15 font-weight-bold">Ciudad:</span>
+                            <span class="text-right">City</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="mr-15 font-weight-bold">Depto:</span>
+                            <span class="text-right"> Dpto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="background-color: #DAEDFB;">
+            <h2 class="m-1">Información Personal</h2>
+        </div>
+        <div class="row justify-content-center">
+
+            <div class="col-md-6">
+                <div class="d-flex flex-column mb-10 mb-md-0">
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="mr-15 font-weight-bold">Nombres y Apellidos:</span>
+                        <span class="text-right">Full name</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="mr-15 font-weight-bold">Doc Identidad:</span>
+                        <span class="text-right">identification card</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="mr-15 font-weight-bold">Edad:</span>
+                        <span class="text-right">age</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="mr-15 font-weight-bold">Teléfono:</span>
+                        <span class="text-right">Phone</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex flex-column mb-10 mb-md-0">
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="mr-15 font-weight-bold">Cargo:</span>
+                        <span class="text-right">Position</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="mr-15 font-weight-bold">Doc Identidad:</span>
+                        <span class="text-right">identification card</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="mr-15 font-weight-bold">Dirección:</span>
+                        <span class="text-right">Address</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="background-color: #DAEDFB;">
+            <h2>Laboratorios</h2>
+        </div>
+        <div class="row justify-content-center">
+
+            <div class="col-md-12">
+                <ol>
+                    <li>Coprologico</li>
+                    <li>Frotis faringeo</li>
+                    <li>KOH Nails</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="background-color: #DAEDFB;">
+            <h2>Diagnostico médico</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <p class="mb-5"> description field</p>
+            </div>
+        </div>
+        <div class="row justify-content-center" style="background-color: #DAEDFB;">
+            <h2>Diagnostico médico</h2>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <!--TODO: Write a function that iterate an object array-->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Apto sin restricción
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Apto con restricción que no interfiere en la Labor
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Apto para trabajar en alturas
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Apto para manipulación de alimentos
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Examen de retiro satisfactorio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Examen de retiro no satisfactorio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Apto con restricciones que no interfieren en la labor
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Aplazado
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <img src="images/firma.png" class="img-fluid" width="170px" height="100px" />
+                    <br/>
+                    <small>Firma del médico</small>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {% endblock content%}
