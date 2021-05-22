@@ -71,7 +71,7 @@ class Person(models.Model):
 class Official(models.Model):
     person = models.ForeignKey(Person, verbose_name='Persona', on_delete=models.PROTECT,blank=True, null=True)
     university = models.CharField(max_length=30, blank=True, verbose_name='Universidad')
-    especialidad = models.CharField(max_length=30, blank=True, verbose_name='Especialidad')
+    especiality= models.CharField(max_length=30, blank=True, verbose_name='Especialidad')
     url = models.URLField(max_length=30, blank=True, verbose_name='Ruta firma')
 
     def __str__(self):
