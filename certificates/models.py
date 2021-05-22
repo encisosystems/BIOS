@@ -10,16 +10,16 @@ class TypeDocument(models.Model):
     def __str__(self):
         return self.name
     class Meta:
-        verbose_name = 'Tipo de documento'
-        verbose_name_plural = 'TIpo de documentos'
+        verbose_name = 'Type Document'
+        verbose_name_plural = 'Type Documents'
 
 class City(models.Model):
     name = models.CharField(max_length=30, blank=True, verbose_name='Nombre de ciudad')
     def __str__(self):
         return self.name
     class Meta:
-        verbose_name = 'Ciudad'
-        verbose_name_plural = 'Sectores'
+        verbose_name = 'City'
+        verbose_name_plural = 'Cities'
 
 class TypeTest(models.Model):
     code = models.IntegerField(blank=True, verbose_name='codigo', null=True)
@@ -27,8 +27,8 @@ class TypeTest(models.Model):
     def __str__(self):
         return self.name
     class Meta:
-        verbose_name = 'Tipo de prueba'
-        verbose_name_plural = 'Tipo de prueba'
+        verbose_name = 'Tipo Test'
+        verbose_name_plural = 'Type Tests'
 
 class Test(models.Model):
     typetest = models.ForeignKey(TypeTest, verbose_name='TIpo de  examen', on_delete=models.PROTECT,
@@ -37,8 +37,8 @@ class Test(models.Model):
     def __str__(self):
         return self.result
     class Meta:
-        verbose_name = 'Tipo de prueba'
-        verbose_name_plural = 'Tipo de prueba'
+        verbose_name = 'Test'
+        verbose_name_plural = 'Tests'
 
 class ConcepType(models.Model):
     code = models.IntegerField(blank=True, verbose_name='codigo', null=True)
@@ -46,8 +46,8 @@ class ConcepType(models.Model):
     def __str__(self):
         return self.name
     class Meta:
-        verbose_name = 'tipo de conceptos'
-        verbose_name_plural = 'TIpo de conceptos'
+        verbose_name = 'Type Concept'
+        verbose_name_plural = 'Type Concepts'
 
 class Person(models.Model):
     name = models.CharField(max_length=30, blank=True, verbose_name='NOmbres', null=True)
@@ -65,8 +65,8 @@ class Person(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Persona'
-        verbose_name_plural = 'Personas'
+        verbose_name = 'Person'
+        verbose_name_plural = 'Persons'
 
 class Official(models.Model):
     person = models.ForeignKey(Person, verbose_name='Persona', on_delete=models.PROTECT,blank=True, null=True)
@@ -78,8 +78,8 @@ class Official(models.Model):
         return self.person.name
 
     class Meta:
-        verbose_name = 'Funcionario'
-        verbose_name_plural = 'Funcionarios'
+        verbose_name = 'Official'
+        verbose_name_plural = 'Officials'
 
 class Doctor(models.Model):
     rm = models.CharField(max_length=30, blank=True, verbose_name='RM', null=True)
@@ -90,8 +90,8 @@ class Doctor(models.Model):
         return self.rm
 
     class Meta:
-        verbose_name = 'Medico'
-        verbose_name_plural = 'Medicos'
+        verbose_name = 'Doctor'
+        verbose_name_plural = 'Doctors'
 
 class ClientEntity(models.Model):
     nit = models.CharField(verbose_name='NIt', max_length=10, blank=True, null=True)
@@ -105,8 +105,8 @@ class ClientEntity(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Empresa de clientee'
-        verbose_name_plural = 'Empresas de clientes'
+        verbose_name = 'Client Entity'
+        verbose_name_plural = 'Client Entities'
 
 class Manipulator(models.Model):
     person = models.ForeignKey(Person, verbose_name='Persona', on_delete=models.PROTECT,
@@ -119,8 +119,8 @@ class Manipulator(models.Model):
         return self.person.name
 
     class Meta:
-        verbose_name = 'Manipulador'
-        verbose_name_plural = 'Manipuladores'
+        verbose_name = 'Manipulator'
+        verbose_name_plural = 'Manipulators'
 
 class Assistance(models.Model):
     assistance = models.ForeignKey(Manipulator, verbose_name='Asistente', on_delete=models.PROTECT,
@@ -132,8 +132,8 @@ class Assistance(models.Model):
         return self.assistance.name
 
     class Meta:
-        verbose_name = 'Asistencia'
-        verbose_name_plural = 'Asistencias'
+        verbose_name = 'Assistance'
+        verbose_name_plural = 'Assistances'
 
 class CertificateAssistance(models.Model):
     assistance = models.ForeignKey(Assistance, verbose_name='Asistencia', on_delete=models.PROTECT,
@@ -146,8 +146,8 @@ class CertificateAssistance(models.Model):
         return self.consecutive
 
     class Meta:
-        verbose_name = 'Certificado de Asistencia'
-        verbose_name_plural = 'Certificado de Asistencias'
+        verbose_name = 'Certificate Assistance'
+        verbose_name_plural = 'Certificate Assistances'
 
 class Capacitation(models.Model):
     code = models.ForeignKey(Assistance, verbose_name='Codigo', on_delete=models.PROTECT,
@@ -162,8 +162,8 @@ class Capacitation(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Asistencia'
-        verbose_name_plural = 'Asistencias'
+        verbose_name = 'Capacitation'
+        verbose_name_plural = 'Capacitations'
 
 class Entity(models.Model):
     nit = models.CharField(verbose_name='NIt', max_length=10, blank=True, null=True)
@@ -181,8 +181,8 @@ class Entity(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'Empresa'
-        verbose_name_plural = 'Empresas'
+        verbose_name = 'Entity'
+        verbose_name_plural = 'Entities'
 
 
 class CapacityCertificate(models.Model):
@@ -201,9 +201,9 @@ class CapacityCertificate(models.Model):
     def str(self):
         return self.QRpath
 
-class Meta:
-    verbose_name = 'Certificado de capacitacion'
-    verbose_name_plural = 'Certificado de capacittaciones'
+    class Meta:
+        verbose_name = 'Capacity Certificate'
+        verbose_name_plural = 'Capacity Certificates'
 
 class CertificateDoctor(models.Model):
     consecutive = models.CharField(verbose_name='Consecutivo', max_length=10, blank=True, null=True)
@@ -226,5 +226,5 @@ class CertificateDoctor(models.Model):
         return self.consecutive
 
     class Meta:
-        verbose_name = 'Certificado medico'
-        verbose_name_plural = 'Certificados medicos'
+        verbose_name = 'Doctor Certificate'
+        verbose_name_plural = 'Doctor Certificates'
