@@ -22,7 +22,7 @@ class City(models.Model):
         verbose_name_plural = 'Sectores'
 
 class TypeTest(models.Model):
-    code = models.IntegerField(max_length=30, blank=True, verbose_name='codigo', null=True)
+    code = models.IntegerField(blank=True, verbose_name='codigo', null=True)
     name = models.CharField(max_length=30, blank=True, verbose_name='Tipo de examen')
     def __str__(self):
         return self.name
@@ -41,7 +41,7 @@ class Test(models.Model):
         verbose_name_plural = 'Tipo de prueba'
 
 class ConcepType(models.Model):
-    code = models.IntegerField(max_length=30, blank=True, verbose_name='codigo', null=True)
+    code = models.IntegerField(blank=True, verbose_name='codigo', null=True)
     name = models.CharField(max_length=30, blank=True, verbose_name='Tipo de concepto')
     def __str__(self):
         return self.name
@@ -52,10 +52,10 @@ class ConcepType(models.Model):
 class Person(models.Model):
     name = models.CharField(max_length=30, blank=True, verbose_name='NOmbres', null=True)
     last_name = models.CharField(max_length=30, blank=True, verbose_name='Apellidos', null=True)
-    phone = models.IntegerField(max_length=30, blank=True, verbose_name='telefono', null=True)
+    phone = models.IntegerField(blank=True, verbose_name='telefono', null=True)
     type_document = models.ForeignKey(TypeDocument, verbose_name='TIpode documento', on_delete=models.PROTECT,
                                       blank=True, null=True)
-    identification = models.IntegerField(max_length=30, verbose_name='Número de identificación', blank=True, null=True)
+    identification = models.IntegerField(verbose_name='Número de identificación', blank=True, null=True)
     address = models.CharField(max_length=30, blank=True, verbose_name='Direccion')
     city = models.ForeignKey(City, verbose_name='Ciudad', on_delete=models.PROTECT,
                                       blank=True, null=True)
@@ -97,7 +97,7 @@ class ClientEntity(models.Model):
     nit = models.CharField(verbose_name='NIt', max_length=10, blank=True, null=True)
     name = models.CharField(max_length=30, blank=True, verbose_name='Nombre de la empresa', null=True)
     business_name = models.CharField(verbose_name='Razon Social', max_length=50, blank=True, null=True)
-    phone = models.IntegerField(max_length=30, blank=True, verbose_name='telefono', null=True)
+    phone = models.IntegerField(blank=True, verbose_name='telefono', null=True)
     email = models.EmailField(verbose_name='Email', max_length=10, blank=True, null=True)
     adress = models.CharField(max_length=30, blank=True, verbose_name='Direccion')
 
@@ -169,7 +169,7 @@ class Entity(models.Model):
     nit = models.CharField(verbose_name='NIt', max_length=10, blank=True, null=True)
     name = models.CharField(max_length=30, blank=True, verbose_name='Nombre de la empresa', null=True)
     business_name = models.CharField(verbose_name='Razon Social', max_length=50, blank=True, null=True)
-    phone = models.IntegerField(max_length=30, blank=True, verbose_name='telefono', null=True)
+    phone = models.IntegerField(blank=True, verbose_name='telefono', null=True)
     email = models.EmailField(verbose_name='Email', max_length=10, blank=True, null=True)
     address = models.CharField(max_length=30, blank=True, verbose_name='Direccion')
     service = models.CharField(verbose_name='Descripcion de servicio', max_length=50, blank=True, null=True)
@@ -187,7 +187,7 @@ class Entity(models.Model):
 
 class CapacityCertificate(models.Model):
     consecutive = models.AutoField(
-        max_length=30, blank=True,
+        blank=True,
         verbose_name='consecutive',
         auto_created=True, primary_key=True)
 
