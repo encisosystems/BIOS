@@ -4,6 +4,7 @@ BOOLEAN_CHOICES = (
         ('SI', 'SI',),
         ('NO', 'NO',),
     )
+
 class TypeDocument(models.Model):
     name = models.CharField(max_length=30, blank=True, verbose_name='Tipo de documento')
     def __str__(self):
