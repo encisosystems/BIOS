@@ -30,7 +30,7 @@ class TypeTest(models.Model):
         verbose_name_plural = 'Tipo de prueba'
 
 class Test(models.Model):
-    typetest = models.ForeignKey(TypeTest, verbose_name='TIpo de testo', on_delete=models.PROTECT,
+    typetest = models.ForeignKey(TypeTest, verbose_name='TIpo de  examen', on_delete=models.PROTECT,
                                       blank=True, null=True)
     result = models.CharField(max_length=30, blank=True, verbose_name='Resultado')
     def __str__(self):
