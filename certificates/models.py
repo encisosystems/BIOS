@@ -183,6 +183,27 @@ class Entity(models.Model):
         verbose_name = 'Empresa'
         verbose_name_plural = 'Empresas'
 
+
+class CapacityCertificate(models.Model):
+    consecutive = models.AutoField(
+        max_length=30, blank=True,
+        verbose_name='consecutive',
+        auto_created=True, primary_key=True)
+
+    date = models.DateField(auto_now_add=True,
+                            verbose_name='Generation date certificate')
+
+    QR_path = models.URLField(
+        max_length=200, verbose_name='QR path',
+        null=True, blank=True)
+
+    def str(self):
+        return self.QRpath
+
+class Meta:
+    verbose_name = 'Certificado de capacitacion'
+    verbose_name_plural = 'Certificado de capacittaciones'
+
 class CertificateDoctor(models.Model):
     consecutive = models.CharField(verbose_name='Consecutivo', max_length=10, blank=True, null=True)
     date = models.DateField(auto_now_add=True)
