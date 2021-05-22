@@ -1,5 +1,5 @@
-
 from django.db import models
+
 BOOLEAN_CHOICES = (
         ('SI', 'SI',),
         ('NO', 'NO',),
