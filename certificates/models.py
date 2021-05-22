@@ -5,13 +5,12 @@ from django.db import models
 class Concept_type(models.Model):
     code = models.AutoField(
         primary_key=True, null=False, 
-        blank=False, max_length=15)
+        blank=False)
     name = models.CharField(
         null=False, blank=False,
         max_length=50)
         
     class Meta:
-        ordering=["codigo"]
         verbose_name="Concept_type"
         verbose_name_plural="Concept_type"
 
@@ -31,7 +30,7 @@ class Manipulator(models.Model):
 class Company_customer(models.Model):
 
     nit = models.CharField(
-        blank=True, null=True,primary_key=True,
+        blank=True, primary_key=True,
         verbose_name='NIt', max_length=15)
         
     social_reason = models.CharField(
@@ -40,7 +39,7 @@ class Company_customer(models.Model):
         
     phone = models.IntegerField(
         null=True,blank=True,
-        max_length=30,verbose_name='Phone Number')
+        verbose_name='Phone Number')
         
     email = models.EmailField(
         blank=True, null=True,
@@ -60,7 +59,7 @@ class Company_customer(models.Model):
 class capacity_certificate(models.Model):
     
     consecutive = models.AutoField(
-        max_length=30, blank=True, 
+        blank=True, 
         verbose_name='consecutive',
         auto_created=True,primary_key=True)
         
@@ -83,17 +82,17 @@ class TypeOfExam(models.Model):
 
 
 class MedicalCertificate(models.Model):
-    consecutive = models.CharField()
+    consecutive = models.CharField(max_length=30, blank=True,)
     generation_date = models.DateField()
     url_qr = models.CharField(max_length=30, blank=True, verbose_name='Url Code QR')
     doctor = models.BigIntegerField()
     bussines = models.BigIntegerField()
     diagnostic = models.CharField(max_length=300, verbose_name="Diagnostico")
-    manipulator = models.CharField()
-    concept = models.CharField()
+    manipulator = models.CharField(max_length=60, blank=True,)
+    concept = models.CharField(max_length=60, blank=True,)
 
 class AttendanceCertificate(models.Model):
-    consecutive = models.CharField()
+    consecutive = models.CharField(max_length=30, blank=True,)
     generation_date = models.DateField()
     url_qr = models.CharField(max_length=30, blank=True, verbose_name='Url Code QR')
 
@@ -104,4 +103,4 @@ class Assistance(models.Model):
 
 class result(models.Model):
     type_of_exam = models.BigIntegerField()
-    result = models.CharField()
+    result = models.CharField(max_length=60, blank=True,)
