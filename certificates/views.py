@@ -1,10 +1,23 @@
 from django.shortcuts import render
+from .models import Manipulator, Official, Person
+from django.views import generic
 
 def medicalCertificate(request):
     return render(request, "medical-certificate.html")
 
-def carnet(request):
-    return render(request, "cma-carnet.html")
 
-def certificateLetter(request):
-    return render(request, "certificate-letter.html")
+class CertificateLetterView(generic.DetailView):
+    model = Person
+    template_name = 'certificate-letter.html'
+
+class CarnetView(generic.DetailView):
+    model = Person
+    template_name = 'cma-carnet.html' 
+
+class ManipulatorView(generic.ListView):
+    model = Manipulator
+    template_name = 'manipulator.html'
+    context_object_name = 'latest_manipulator_list'
+    
+    def get_queryset(self):
+        return Person.objects.order_by('-city')[:5]

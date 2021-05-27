@@ -36,9 +36,9 @@ Carta cerficado-BIOS
         <div class="col-sm-12">
             <h3 class="text-center p-0 m-0">Certifica</h3>
             <p class="text-justify p-0 mt-5">
-                Que {person_name} identificado(a) con cédula de ciudadanía No. {person_id},
+                Que {{person.name}} {{person.last_name}} identificado(a) con cédula de ciudadanía No. {{person.identification}},
                 realizó la capacitación en manipulación de alimentos y buenas prácticas de manufactura
-                realizado el dia {course_date}, con una intensidad de intensity Horas.
+                realizado el dia {{person.birth}}, con una intensidad de intensity Horas.
             </p>
             <p class="text-justify p-0 mt-3">
                 Esta certificación se expide a solicitud del interesado en dia certification_date
