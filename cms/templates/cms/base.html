@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+    </title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+        {% block navbar %}
+        <div class="container">
+            <div class="inner-header">
+                <div class="row">
+                    <div></div>
+                    <div class="col-lg-2 col-md-2">
+                        <div class="logo">
+                            <a href="{% url 'home' %}">
+                                <img src="{% static 'img/logo.png' %}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-lg-7 offset-md-7 text-right col-md-3">
+                        <ul class="nav-right">
+                            <li class="heart-icon">
+                                <a href="#">
+                                    <i class="icon_heart_alt"></i>
+                                    <span>1</span>
+                                </a>
+                            </li>
+                            <li class="cart-icon">
+                                <a href="{% url 'cart' %}">
+                                    <i class="icon_bag_alt"></i>
+                                    <span>3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-item">
+            <div class="container">
+                <nav class="nav-menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="{% url 'home' %}">Inicio</a></li>
+                        <li><a href="{% url 'shop' %}">Tienda</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Pages</a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'blog-details' %}">Blog Details</a></li>
+                                <li><a href="{% url 'cart' %}">Carrito de compras</a></li>
+                                <li><a href="{% url 'checkout' %}">Checkout</a></li>
+                                <li><a href="{% url 'medical-certificate' %}">Certificado Medico</a></li>
+                                <li><a href="{% url 'cma-carnet' %}">Carnet</a></li>
+                                <li><a href="{% url 'certificate-letter' %}">Carta certificado</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap">
+                </div>
+            </div>
+        </div>
+
+        {% endblock navbar %}
+
+        {% block content %}
+
+        {% endblock content %}
+
+        {% block partner %}
+
+            <!-- Partner Logo Section Begin -->
+        <div class="partner-logo">
+                <div class="container">
+                    <div class="logo-carousel owl-carousel">
+                        <div class="logo-item">
+                            <div class="tablecell-inner">
+                                <img src="#" alt="">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="tablecell-inner">
+                                <img src="#" alt="">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="tablecell-inner">
+                                <img src="#" alt="">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="tablecell-inner">
+                                <img src="#" alt="">
+                            </div>
+                        </div>
+                        <div class="logo-item">
+                            <div class="tablecell-inner">
+                                <img src="#" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Partner Logo Section End -->
+
+        {% endblock partner%}
+
+        {% block footer %}
+        <footer class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="footer-left">
+                            <div class="footer-logo">
+                                <a href="#"><img src="{% static 'img/Logo-white-30x87.png' %}" alt=""></a>
+                            </div>
+                            <ul>
+                                <li>Dirección: 60-49 Road 11378</li>
+                                <li>Telefono: +65 11.188.888</li>
+                                <li>Correo: hello.colorlib@gmail.com</li>
+                            </ul>
+                            <div class="footer-social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 offset-lg-1">
+                        <div class="footer-widget">
+                            <h5>Information</h5>
+                            <ul>
+                                <li><a href="#">Acerca de</a></li>
+                                <li><a href="#">Contacto</a></li>
+                                <li><a href="#">Servicios</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="footer-widget">
+                            <h5>My Account</h5>
+                            <ul>
+                                <li><a href="#">Mi cuenta</a></li>
+                                <li><a href="#">Contacto</a></li>
+                                <li><a href="#">Shopping Cart</a></li>
+                                <li><a href="#">Tienda</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="newslatter-item">
+                            <h5>Join Our Newsletter Now</h5>
+                            <p>Get E-mail updates about our latest shop and special offers.</p>
+                            <form action="#" class="subscribe-form">
+                                <input type="text" placeholder="Enter Your Mail">
+                                <button type="button">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% endblock footer %}
+
+     <!-- Js Plugins-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+     <script src="https://use.fontawesome.com/a1a3d1a3f5.js"></script>
+     <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
