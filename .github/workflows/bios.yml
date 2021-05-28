@@ -1,5 +1,14 @@
 name: BIOS CI/CD
 
+on:
+  pull_request:
+    branches: 
+      - master
+
+  push:
+    branches: 
+      - master
+
 jobs:
   deployment:
     runs-on: ubuntu-20.04
