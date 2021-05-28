@@ -3,7 +3,7 @@
 {% load static %} 
 
 {% block title %}
-    Blog Details
+    Detalles del Blog
 {% endblock title %}
 
 {% block content %}
@@ -13,9 +13,9 @@
           <div class="row">
               <div class="col-lg-12">
                   <div class="breadcrumb-text product-more">
-                      <a href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a>
-                      <a href="{% url 'shop' %}">Shop</a>
-                      <span>Shopping Cart</span>
+                      <a href="{% url 'home' %}"><i class="fa fa-home"></i> Casa</a>
+                      <a href="{% url 'shop' %}">Tienda</a>
+                      <span>Carro de Compras</span>
                   </div>
               </div>
           </div>
@@ -32,10 +32,10 @@
                       <table>
                           <thead>
                               <tr>
-                                  <th>Image</th>
-                                  <th class="p-name">Product Name</th>
-                                  <th>Price</th>
-                                  <th>Quantity</th>
+                                  <th>Imagen</th>
+                                  <th class="p-name">Nombre del Producto</th>
+                                  <th>Precio</th>
+                                  <th>Cantidad</th>
                                   <th>Total</th>
                                   <th><i class="ti-close"></i></th>
                               </tr>
@@ -44,7 +44,7 @@
                               <tr>
                                   <td class="cart-pic first-row"><img src="{% static 'img/cart-page/product-1.jpg' %}" alt=""></td>
                                   <td class="cart-title first-row">
-                                      <h5>Pure Pineapple</h5>
+                                      <h5>Piña Pura</h5>
                                   </td>
                                   <td class="p-price first-row">$60.00</td>
                                   <td class="qua-col first-row">
@@ -60,7 +60,7 @@
                               <tr>
                                   <td class="cart-pic"><img src="{% static 'img/cart-page/product-2.jpg' %}" alt=""></td>
                                   <td class="cart-title">
-                                      <h5>American lobster</h5>
+                                      <h5>Langosta Americana</h5>
                                   </td>
                                   <td class="p-price">$60.00</td>
                                   <td class="qua-col">
@@ -76,7 +76,7 @@
                               <tr>
                                   <td class="cart-pic"><img src="{% static 'img/cart-page/product-3.jpg' %}" alt=""></td>
                                   <td class="cart-title">
-                                      <h5>Guangzhou sweater</h5>
+                                      <h5>Suéter Guangzhou</h5>
                                   </td>
                                   <td class="p-price">$60.00</td>
                                   <td class="qua-col">
@@ -95,14 +95,14 @@
                   <div class="row">
                       <div class="col-lg-4">
                           <div class="cart-buttons">
-                              <a href="{% url 'shop' %}" class="primary-btn continue-shop">Continue shopping</a>
-                              <a href="{% url 'cart' %}" class="primary-btn up-cart">Update cart</a>
+                              <a href="{% url 'shop' %}" class="primary-btn continue-shop">Continuar Comprando</a>
+                              <a href="{% url 'cart' %}" class="primary-btn up-cart">Actualizar Carrito</a>
                           </div>
                           <div class="discount-coupon">
-                              <h6>Discount Codes</h6>
+                              <h6>Código de Descuento</h6>
                               <form action="#" class="coupon-form">
-                                  <input type="text" placeholder="Enter your codes">
-                                  <button type="submit" class="site-btn coupon-btn">Apply</button>
+                                  <input type="text" placeholder="ingresar Códigos">
+                                  <button type="submit" class="site-btn coupon-btn">Aplicar</button>
                               </form>
                           </div>
                       </div>
@@ -112,7 +112,7 @@
                                   <li class="subtotal">Subtotal <span>$240.00</span></li>
                                   <li class="cart-total">Total <span>$240.00</span></li>
                               </ul>
-                              <a href="{% url 'checkout' %}" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                              <a href="{% url 'checkout' %}" class="proceed-btn">Proceder al pago</a>
                           </div>
                       </div>
                   </div>

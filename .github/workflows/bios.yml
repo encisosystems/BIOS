@@ -1,0 +1,28 @@
+name: BIOS CI/CD
+
+on:
+  pull_request:
+    branches: 
+      - master
+
+  push:
+    branches: 
+      - master
+
+jobs:
+  deployment:
+    runs-on: ubuntu-20.04
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Dokku deployment
+        # Please check https://github.com/marketplace/actions/dokku-github-action
+        uses: vitalyliber/dokku-github-action@v6.0
+        env:
+          # Dokku droplet private key. You must add the private key in your secrets.
+          # This private key must not have a passphrase
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          # Dokku droplet IPv4
+          HOST: 157.230.57.158
+          # App name
+          PROJECT: bios

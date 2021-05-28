@@ -8,22 +8,42 @@ SECRET_KEY = 'p3gm=o9o+_r(5*o$$kn#h*8#n1r)aquf^^nm_v5u0pn^qa$=4*'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
+def show_toolbar(request):
+    """
+    The default callback checks if the IP is internal, but docker's IP
+    addresses are not in INTERNAL_IPS, so we force the display in dev mode
+    :param request: The intercepted request
+    :return: True
+    """
+    return True
+
 # CORS Config: install django-cors-headers and uncomment the following to allow CORS from any origin
-"""
 DEV_APPS = [
-    'corsheaders'
+    'debug_toolbar',
+    # 'corsheaders'
 ]
 
 INSTALLED_APPS += DEV_APPS
 
 DEV_MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware'
 ]
 
 MIDDLEWARE = MIDDLEWARE + DEV_MIDDLEWARE  # CORS middleware should be at the top of the list
 
-CORS_ORIGIN_ALLOW_ALL = True
-"""
+# CORS_ORIGIN_ALLOW_ALL = True
+
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+    'SHOW_TOOLBAR_CALLBACK': show_toolbar,
+    'SKIP_TEMPLATE_PREFIXES': (
+        'django/forms/widgets/',
+        'admin/widgets/',
+        'menus/',
+        'pipeline/',
+    ),
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases

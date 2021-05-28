@@ -1,0 +1,1 @@
+from shop.tests.test_models import *
