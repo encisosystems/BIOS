@@ -60,7 +60,8 @@ class Person(models.Model):
     address        = models.CharField(max_length=250, blank=True, verbose_name='Address')
     job            = models.CharField(max_length=100, blank=True, verbose_name='Job Name', null=True)
     city           = models.ForeignKey(City, verbose_name='Choose City', on_delete=models.PROTECT, blank=True, null=True)
-    
+    email           = models.CharField(max_length=100, blank=True, verbose_name='Email Address', null=True)
+
     def __str__(self):
         return self.name
     class Meta:
@@ -122,22 +123,12 @@ class Assistance(models.Model):
     approved          = models.CharField(max_length=2, choices=BOOLEAN_CHOICES, verbose_name='Approved?', null=True, blank=True)
 
     def __str__(self):
-        return self.assistance.name
+        return self.assistance.person.name
     class Meta:
         verbose_name = 'Assistance'
         verbose_name_plural = 'Assistances'
 
-class CertificateAssistance(models.Model):
-    assistance  = models.ForeignKey(Assistance, verbose_name='Choose Assistance', on_delete=models.PROTECT, blank=True, null=True)
-    consecutive = models.CharField(max_length=30, blank=True, verbose_name='Consecutive')
-    date = models.DateField(auto_now_add=True, verbose_name="Certificate Of Assistance Date")
-    qr_url = models.URLField(max_length=200, verbose_name='QR Code Url', null=True, blank=True)
 
-    def __str__(self):
-        return self.consecutive
-    class Meta:
-        verbose_name = 'Certificate Assistance'
-        verbose_name_plural = 'Certificate Assistances'
 
 class Capacitation(models.Model):
     code = models.ForeignKey(Assistance, verbose_name='Choose Assistance', on_delete=models.PROTECT, blank=True, null=True)
@@ -145,12 +136,27 @@ class Capacitation(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name="Capacitation Date")
     name = models.CharField(max_length=100, blank=True, verbose_name='Capacitacion Name', null=True)
     address = models.CharField(max_length=100, blank=True, verbose_name='Address')
-
+    capacity_hours = models.IntegerField( blank=True,null=True, verbose_name='Intensidad de la capacitación')
+    
     def __str__(self):
         return self.name
     class Meta:
         verbose_name = 'Capacitation'
         verbose_name_plural = 'Capacitations'
+
+class CertificateAssistance(models.Model):
+    assistance  = models.ForeignKey(Assistance, verbose_name='Choose Assistance', on_delete=models.PROTECT, blank=True, null=True)
+    consecutive = models.CharField(max_length=30, blank=True, verbose_name='Consecutive')
+    date = models.DateField(auto_now_add=True, verbose_name="Certificate Of Assistance Date")
+    qr_url = models.URLField(max_length=200, verbose_name='QR Code Url', null=True, blank=True)
+    certificate_date = models.DateField( blank=True,null=True, verbose_name='Fecha de la Certificación')
+    capacitation = models.ForeignKey(Capacitation, verbose_name='Capacitación', on_delete=models.PROTECT, blank=True, null=True)
+
+    def __str__(self):
+        return self.consecutive
+    class Meta:
+        verbose_name = 'Certificate Assistance'
+        verbose_name_plural = 'Certificate Assistances'
 
 class Entity(models.Model):
     nit           = models.CharField(max_length=100, blank=True, verbose_name='Nit (Tributary Identification Number)', null=True)
