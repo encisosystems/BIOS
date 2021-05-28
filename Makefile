@@ -16,6 +16,9 @@ makemigrations:
 migrate:
 	docker exec -it bios ./manage.py migrate
 
+migratefake:
+	docker exec -it bios ./manage.py migrate --fake
+
 initialfixture:
 	docker exec -it bios ./manage.py loaddata initial
 

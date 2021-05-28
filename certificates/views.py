@@ -5,3 +5,6 @@ def medicalCertificate(request):
 
 def carnet(request):
     return render(request, "cma-carnet.html")
+
+def certificateLetter(request):
+    return render(request, "certificate-letter.html")
