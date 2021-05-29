@@ -1,16 +1,22 @@
 from django.shortcuts import render
-from .models import CapacityCertificate, CertificateAssistance, CertificateDoctor
+from .models import CapacityCertificate, CertificateAssistance, CertificateDoctor, ConcepType, Test
 from django.views import generic
 
-class CertificateDoctorView(generic.DetailView):
-    model = CertificateDoctor
-    context_object_name = 'certificate'
-    template_name = 'medical-certificate.html'
+#class CertificateDoctorView(generic.DetailView):
+#    model = CertificateDoctor
+#    context_object_name = 'certificate'
+#    template_name = 'medical-certificate.html'
 
 class CertificateLetterView(generic.DetailView):
     model = CertificateAssistance
     context_object_name = 'certificate'
     template_name = 'certificate-letter.html'
+
+def certificateDoctor(request,certificate_id):
+    certificate = CertificateDoctor.objects.get(pk=certificate_id)
+    tests = Test.objects.objects.filter(certificate=certificate_id)
+    concepts = ConcepType.objects.all()
+    return render(request, 'medical-certificate.html', {'certificate': certificate, 'tests': tests, 'concepts':concepts})
 
 class CarnetView(generic.DetailView):
     model = CapacityCertificate

@@ -97,17 +97,24 @@
         <div class="row justify-content-center">
 
             <div class="col-md-12-center">
+                {% if tests %}
                 <ol>
-                    <li>COPROLOGICO {{certificate.certificateassitance.assistance.approved}}</li>
+                    {% for test in tests %}
+                    <li>{{test.typetest.name}} {{test.result}}</li>
+                    {% endfor %}
                 </ol>
+                {% else %}
+                <p>There are test available.</p>
+                {% endif %} 
             </div>
         </div>
+
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
             <h2>Diagnostico médico</h2>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <p class="mb-5">{{certificate.certificateassitance.assistance.code_capacitation}}</p>
+                <p class="mb-5">{{certificate.diagnostic}}</p>
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
@@ -115,58 +122,25 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <!--TODO: Write a function that iterate an object array-->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto sin restricción
-                    </label>
-                </div>
+                
+                {% if concepts %}
+                {% for concept in concepts %}
+                
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                        <label class="form-check-label" for="defaultCheck1">
+                            {{concept.name}}
+                        </label>
+                    </div> 
+                    
+                {% endfor %}
+               
+                {% else %}
+                <p>There are Concepts available.</p>
+                {% endif %} 
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto con restricción que no interfiere en la Labor
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto para trabajar en alturas
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto para manipulación de alimentos
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Examen de retiro satisfactorio
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Examen de retiro no satisfactorio
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto con restricciones que no interfieren en la labor
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Aplazado
-                    </label>
-                </div>
+                    
+                 
             </div>
         </div>
     </div>
