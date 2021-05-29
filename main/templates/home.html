@@ -9,14 +9,17 @@
 
 {% block content %}
 
+
+
 <!-- Hero Section Begin -->
 <section class="hero-section">
     <div class="hero-items owl-carousel">
-        <div class="single-hero-items set-bg" data-setbg="static/img/hero-1.jpg">
-            
+        {% for image in images%} 
+       
+        <div class="single-hero-items set-bg" data-setbg="media/{{image.image}}"> 
         </div>
-        <div class="single-hero-items set-bg" data-setbg="static/img/hero-2.jpg">
-        </div>
+        {% endfor %}
+
     </div>
 </section>
 <!-- Hero Section End -->
