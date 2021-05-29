@@ -23,3 +23,46 @@ class TestCarrousel(TestCase):
         self.carrousel.delete()
         self.assertNotIn(self.carrousel, self.queryset)
 
+class TestPage(TestCase):
+    
+    def setUp(self):
+        Page.objects.create(id=1,title='One',slug='/hello')
+        self.page= Page.objects.get(id=1)
+        self.queryset = Page.objects.all()
+
+    def test_query_carrousel(self):
+        title = self.page.title
+        slug = self.page.slug
+        self.assertEqual(title, 'One')
+        self.assertEqual(slug, '/hello')
+
+    def test_update_carrousel(self):
+        self.page.title = 'Two'
+        self.page.save()
+        self.assertEqual(self.page.title, 'Two')
+
+    def test_delete_carrousel(self):
+        self.page.delete()
+        self.assertNotIn(self.page, self.queryset)
+
+class TestContent(TestCase):
+    
+    def setUp(self):
+        Content.objects.create(id=1,title='One',body='hello')
+        self.content= Content.objects.get(id=1)
+        self.queryset = Content.objects.all()
+
+    def test_query_carrousel(self):
+        title = self.content.title
+        body = self.content.body
+        self.assertEqual(title, 'One')
+        self.assertEqual(body, 'hello')
+
+    def test_update_carrousel(self):
+        self.content.title = 'Two'
+        self.content.save()
+        self.assertEqual(self.content.title, 'Two')
+
+    def test_delete_carrousel(self):
+        self.content.delete()
+        self.assertNotIn(self.content, self.queryset)
