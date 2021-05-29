@@ -14,7 +14,7 @@ class CertificateLetterView(generic.DetailView):
 
 def certificateDoctor(request,certificate_id):
     certificate = CertificateDoctor.objects.get(pk=certificate_id)
-    tests = Test.objects.objects.filter(certificate=certificate_id)
+    tests = Test.objects.filter(certificate_id=certificate_id)
     concepts = ConcepType.objects.all()
     return render(request, 'medical-certificate.html', {'certificate': certificate, 'tests': tests, 'concepts':concepts})
 

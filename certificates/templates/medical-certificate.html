@@ -100,7 +100,7 @@
                 {% if tests %}
                 <ol>
                     {% for test in tests %}
-                    <li>{{test.typetest.name}} {{test.result}}</li>
+                    <li>{{test.typetest.name}} <b>{{test.result}}</b></li>
                     {% endfor %}
                 </ol>
                 {% else %}
@@ -125,14 +125,21 @@
                 
                 {% if concepts %}
                 {% for concept in concepts %}
-                
+                    {% if certificate.id == concept.code %}
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
                         <label class="form-check-label" for="defaultCheck1">
                             {{concept.name}}
                         </label>
                     </div> 
-                    
+                    {% else %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            {{concept.name}}
+                        </label>
+                    </div> 
+                    {% endif %} 
                 {% endfor %}
                
                 {% else %}
@@ -148,7 +155,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="text-center">
-                    <img src="images/firma.png" class="img-fluid" width="170px" height="100px" />
+                    <img src="/media/{{certificate.entity.official.url}}" class="img-fluid" width="170px" height="100px" />
                     <br/>
                     <small>Firma del médico</small>
                 </div>
