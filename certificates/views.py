@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import CertificateAssistance, Manipulator, Official, Person
+from .models import CertificateAssistance, CertificateDoctor, Manipulator, Official, Person
 from django.views import generic
 
 def medicalCertificate(request):
@@ -23,3 +23,9 @@ class ManipulatorView(generic.ListView):
     
     def get_queryset(self):
         return Person.objects.order_by('-city')[:5]
+
+def manipulator(request, article=None):    
+    certificatesDoctorList = CertificateDoctor.objects
+    certificatesAssistanceList = CertificateAssistance.objects
+    
+    return render(request, 'manipulator.html', {'medicalList': certificatesDoctorList, 'assistanceList': certificatesAssistanceList})
