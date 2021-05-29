@@ -17,7 +17,7 @@
                 <h4 class="justify-content-center">Certificado Médico</h4>
                 <h4>Manipulador de Alimentos</h4>
                 <div class="border border-primary text-center rounded" style="background-color: #ffffff;">
-                    No. {{certificate.id}}
+                    No. {{certificate.consecutive}}
                 </div>
             </div>
         </div>
@@ -26,11 +26,11 @@
                 <div class="d-flex flex-column mb-10 mb-md-0">
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Empresa:</span>
-                        <span class="text-right">Company name</span>
+                        <span class="text-right">{{certificate.manipulator.entity.name}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Fecha:</span>
-                        <span class="text-right">18 / 11 / 20</span>
+                        <span class="text-right">{{certificate.date}}</span>
                     </div>
                 </div>
             </div>
@@ -39,11 +39,11 @@
                     <div class="d-flex flex-column mb-10 mb-md-0">
                         <div class="d-flex justify-content-between mb-3">
                             <span class="mr-15 font-weight-bold">Ciudad:</span>
-                            <span class="text-right">City</span>
+                            <span class="text-right">{{certificate.manipulator.person.city}}</span>
                         </div>
                         <div class="d-flex justify-content-between mb-3">
-                            <span class="mr-15 font-weight-bold">Depto:</span>
-                            <span class="text-right"> Dpto</span>
+                            <span class="mr-15 font-weight-bold"></span>
+                            <span class="text-right"> </span>
                         </div>
                     </div>
                 </div>
@@ -58,19 +58,19 @@
                 <div class="d-flex flex-column mb-10 mb-md-0">
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Nombres y Apellidos:</span>
-                        <span class="text-right">Full name</span>
+                        <span class="text-right">{{certificate.manipulator.person.name}} {{certificate.manipulator.person.last_name}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="mr-15 font-weight-bold">Doc Identidad:</span>
-                        <span class="text-right">identification card</span>
+                        <span class="mr-15 font-weight-bold">Tipo Doc Identidad:</span>
+                        <span class="text-right">{{certificate.manipulator.person.type_document}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="mr-15 font-weight-bold">Edad:</span>
-                        <span class="text-right">age</span>
+                        <span class="mr-15 font-weight-bold">Email:</span>
+                        <span class="text-right">{{certificate.manipulator.person.email}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Teléfono:</span>
-                        <span class="text-right">Phone</span>
+                        <span class="text-right">{{certificate.manipulator.person.phone}}</span>
                     </div>
                 </div>
             </div>
@@ -78,15 +78,15 @@
                 <div class="d-flex flex-column mb-10 mb-md-0">
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Cargo:</span>
-                        <span class="text-right">Position</span>
+                        <span class="text-right">{{certificate.manipulator.person.job}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Doc Identidad:</span>
-                        <span class="text-right">identification card</span>
+                        <span class="text-right">{{certificate.manipulator.person.identification}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Dirección:</span>
-                        <span class="text-right">Address</span>
+                        <span class="text-right">{{certificate.manipulator.person.address}}</span>
                     </div>
                 </div>
             </div>
@@ -96,11 +96,9 @@
         </div>
         <div class="row justify-content-center">
 
-            <div class="col-md-12">
+            <div class="col-md-12-center">
                 <ol>
-                    <li>Coprologico</li>
-                    <li>Frotis faringeo</li>
-                    <li>KOH Nails</li>
+                    <li>COPROLOGICO {{certificate.certificateassitance.assistance.approved}}</li>
                 </ol>
             </div>
         </div>
@@ -109,7 +107,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <p class="mb-5"> description field</p>
+                <p class="mb-5">{{certificate.certificateassitance.assistance.code_capacitation}}</p>
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
