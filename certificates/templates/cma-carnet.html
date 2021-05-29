@@ -1,17 +1,19 @@
-{% extends 'base.html' %}
-{% load static %}
-
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
 <div class="container">
   <div class="row">
     <div class="col mt-3 offset-2">
       <div class="card" style="width: 20rem">
-        <img src="{% static 'img/logo.png' %}" class="img-rounded mt-3 mx-auto" width="150" />
-        
+        <img
+          src="{% static 'img/logo.png' %}"
+          class="img-rounded mt-3 mx-auto"
+          width="150"
+        />
+
         <div class="card-body">
-          <h4 class="text-center">{{capacity.medicalcertificate.conceptype.name}}</h4>
+          <h4 class="text-center">
+            {{capacity.medicalcertificate.conceptype.name}}
+          </h4>
           <p class="h6">
             <small
               >Certifica que el paciente se encuentra apto para manupular
@@ -35,24 +37,28 @@
             </svg>
           </p>
         </div>
-          <h6 class="display-6">FECHA EXPEDICIÓN</h6>
-          <h6 class="text-danger">{{capacity.assistancecertificate.date}}</h6>
-          <h6 class="text-center">
-            <img
-            src="https://www.consumer.es/wp-content/uploads/2019/07/img_firma-3-720x471.jpg"
+        <h6 class="display-6">FECHA EXPEDICIÓN</h6>
+        <h6 class="text-danger">{{capacity.assistancecertificate.date}}</h6>
+        <h6 class="text-center">
+          <img
+            src="/media/{{capacity.medicalcertificate.doctor.official.url}}"
             class="img-thumbnail mx-auto"
             alt="Firma Microbología"
             width="150"
             height="150"
           />
           <p class="h6"><small>Firma Microbiólogo</small></p>
-          </h6>
+        </h6>
       </div>
     </div>
 
     <div class="col mt-3">
       <div class="card" style="width: 20rem">
-        <img src="{% static 'img/logo.png' %}" class="img-rounded mt-3 mx-auto" width="150" />
+        <img
+          src="{% static 'img/logo.png' %}"
+          class="img-rounded mt-3 mx-auto"
+          width="150"
+        />
         <div class="card-body">
           <h6 class="display-5">No. {{capacity.consecutive}}</h6>
           <p class="h6">
@@ -62,15 +68,25 @@
             </small>
           </p>
         </div>
-        <h6 class="text-center">{{capacity.assistancecertificate.assistance.assistance.person.name}} {{capacity.assistancecertificate.assistance.assistance.person.last_name}}</h6>
-        <h6 class="text-center">con {{capacity.assistancecertificate.assistance.assistance.person.type_document}}  N°</h6>
-        <h6 class="text-center">{{capacity.assistancecertificate.assistance.assistance.person.identification}} </h6>
+        <h6 class="text-center">
+          {{capacity.assistancecertificate.assistance.assistance.person.name}}
+          {{capacity.assistancecertificate.assistance.assistance.person.last_name}}
+        </h6>
+        <h6 class="text-center">
+          con
+          {{capacity.assistancecertificate.assistance.assistance.person.type_document}}
+          N°
+        </h6>
+        <h6 class="text-center">
+          {{capacity.assistancecertificate.assistance.assistance.person.identification}}
+        </h6>
         <h6 class="text-center">
           <small
-            >El portador de este carnet asistió a la capacitación. {{capacity.medicalcertificate.conceptype.name}}</small
+            >El portador de este carnet asistió a la capacitación.
+            {{capacity.medicalcertificate.conceptype.name}}</small
           >
           <img
-            src="https://www.consumer.es/wp-content/uploads/2019/07/img_firma-3-720x471.jpg"
+            src="/media/{{capacity.assistancecertificate.capacitation.official.url}}"
             class="img-thumbnail mx-auto"
             alt="Firma Administrativo"
             width="150"
