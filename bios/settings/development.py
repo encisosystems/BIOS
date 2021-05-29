@@ -57,7 +57,7 @@ if os.environ.get('DATABASE_URL', ''):
 elif os.environ.get('GITHUB_WORKFLOW'):
     DATABASES = {
         'default': {
-           'ENGINE': 'django.contrib.gis.db.backends.postgis',
+           'ENGINE': 'django.db.backends.postgresql',
            'NAME': 'postgres',
            'USER': 'postgres',
            'PASSWORD': 'postgres',
@@ -69,7 +69,7 @@ elif os.environ.get('GITHUB_WORKFLOW'):
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'postgres',
             'USER': 'postgres',
             'PASSWORD': 'postgres',
