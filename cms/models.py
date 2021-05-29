@@ -1,4 +1,7 @@
 from django.db import models
+from tinymce.models import HTMLField
+from django_quill.fields import QuillField
+from ckeditor.fields import RichTextField
 
 
 class Carrousel(models.Model):
@@ -69,8 +72,15 @@ class Content(models.Model):
         help_text="Title")
     page = models.ForeignKey(Page, on_delete=models.CASCADE, null=True)
     carrousel = models.ForeignKey(Carrousel, on_delete=models.SET_NULL, blank=True, null=True)
-    body = models.TextField(
-        max_length=200,
+    # body = HTMLField(
+    #     blank=True,
+    #     null=True,
+    # )
+    # body = RichTextField(
+    #     blank=True,
+    #     null=True,
+    # )
+    body = QuillField(
         blank=True,
         null=True,
     )
