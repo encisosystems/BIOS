@@ -1,5 +1,5 @@
 from django.urls import path
-from certificates.views import medicalCertificate, carnet
+from certificates.views import medicalCertificate
 from . import views
 
 
