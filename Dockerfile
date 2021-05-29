@@ -14,4 +14,7 @@ WORKDIR /src
 COPY requirements.txt /src/
 RUN pip install -r /src/requirements.txt
 
+COPY test-requirements.txt /src/
+RUN pip install -r /src/test-requirements.txt
+
 COPY . /src
