@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block content %}
 
 <div class="container">
@@ -10,7 +11,7 @@
         <img src="{% static 'img/logo.png' %}" class="img-rounded mt-3 mx-auto" width="150" />
         
         <div class="card-body">
-          <h4 class="text-center">CONCEPTO MÉDICO</h4>
+          <h4 class="text-center">{{capacity.medicalcertificate.conceptype.name}}</h4>
           <p class="h6">
             <small
               >Certifica que el paciente se encuentra apto para manupular
@@ -35,7 +36,7 @@
           </p>
         </div>
           <h6 class="display-6">FECHA EXPEDICIÓN</h6>
-          <h6 class="text-danger">18 / 11 / 20</h6>
+          <h6 class="text-danger">{{capacity.assistancecertificate.date}}</h6>
           <h6 class="text-center">
             <img
             src="https://www.consumer.es/wp-content/uploads/2019/07/img_firma-3-720x471.jpg"
@@ -53,7 +54,7 @@
       <div class="card" style="width: 20rem">
         <img src="{% static 'img/logo.png' %}" class="img-rounded mt-3 mx-auto" width="150" />
         <div class="card-body">
-          <h6 class="display-5">No. 11329 - 2</h6>
+          <h6 class="display-5">No. {{capacity.consecutive}}</h6>
           <p class="h6">
             <small
               >En cumplimiento de la resolución 2674 de 2013 articulo 36
@@ -61,13 +62,12 @@
             </small>
           </p>
         </div>
-        <h6 class="text-center">{{person.name}} {{person.last_name}}</h6>
-        <h6 class="text-center">con {{person.type_document}} N°</h6>
-        <h6 class="text-center">{{person.identification}}</h6>
+        <h6 class="text-center">{{capacity.assistancecertificate.assistance.assistance.person.name}} {{capacity.assistancecertificate.assistance.assistance.person.last_name}}</h6>
+        <h6 class="text-center">con {{capacity.assistancecertificate.assistance.assistance.person.type_document}}  N°</h6>
+        <h6 class="text-center">{{capacity.assistancecertificate.assistance.assistance.person.identification}} </h6>
         <h6 class="text-center">
           <small
-            >El portador de este carnet asistió a la capacitación. HIGIENE Y
-            MANUPULACION DE ALIMENTOS</small
+            >El portador de este carnet asistió a la capacitación. {{capacity.medicalcertificate.conceptype.name}}</small
           >
           <img
             src="https://www.consumer.es/wp-content/uploads/2019/07/img_firma-3-720x471.jpg"
