@@ -61,8 +61,8 @@ jobs:
         # export "PATH=/home/runner/.local/bin:$PATH" is needed to avoid a script error
         run: |
           export "PATH=/home/runner/.local/bin:$PATH"
-          coverage run ./manage.py test --no-input --keepdb -v 2
-          coverage report
+          run ./manage.py test --no-input --keepdb -v 2
+
 
   deployment:
     runs-on: ubuntu-20.04
