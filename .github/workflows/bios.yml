@@ -50,7 +50,6 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Tests
-      env:
       run: |
         export "PATH=/home/runner/.local/bin:$PATH"
         python manage.py test
