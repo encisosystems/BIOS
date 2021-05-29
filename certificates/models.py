@@ -87,7 +87,7 @@ class Doctor(models.Model):
     official       = models.ForeignKey(Official, verbose_name='Choose Official', on_delete=models.PROTECT, blank=True, null=True)
     
     def __str__(self):
-        return self.rm
+        return self.resolution
     class Meta:
         verbose_name = 'Doctor'
         verbose_name_plural = 'Doctors'

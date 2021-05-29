@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block content %}
+<ul class="list-group list-group-flush">
+  <div class="bd-manipulator">
+    {% if latest_manipulator_list %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Número</th>
+          <th scope="col">Cedula</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Telefono</th>
+          <!-- <th scope="col">Email</th> -->
+          <th scope="col">Certificado</th>
+          <th scope="col">Carta</th>
+          <th scope="col">Carnet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for manipulador in latest_manipulator_list %}
+          <th scope="row">{{manipulador.id}}</th>
+          <td>{{manipulador.identification}}</td>
+          <td>{{manipulador.name}}</td>
+          <td>{{manipulador.phone}}</td>
+          <!-- <td href="{% url 'cma-carnet' manipulador.id %}">{{manipulador.email}}</td> -->
+          <td><a> Aquí</a></td>
+          <td><a href="{% url 'certificate-letter' manipulador.id %}"> Aquí</a></td>
+          <td><a href="{% url 'cma-carnet' manipulador.id %}"> Aquí</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</ul>
+{% else %}
+<p>There are no people available.</p>
+{% endif %} 
+{% endblock %}
