@@ -42,8 +42,6 @@ PROJECT_APPS = [
 ]
 
 ADDONS = [
-    'tinymce',
-    'django_quill',
     'ckeditor',
     # Pick the Addons you want
     # To use Webpack, uncomment next line
