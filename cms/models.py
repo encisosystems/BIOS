@@ -34,11 +34,15 @@ class Template(models.Model):
 class Page(models.Model):
     """Model Page"""
     title = models.CharField(
-        null=False, blank=False, max_length=50,
+        null=False, 
+        blank=False, 
+        max_length=50,
         verbose_name="Title",
         help_text="Title")
     slug = models.CharField(
-        null=False, blank=False, max_length=100,
+        null=False, 
+        blank=False, 
+        max_length=100,
         verbose_name="Slug",
         help_text="Slug")
 
@@ -46,26 +50,40 @@ class Page(models.Model):
         ordering = ["id"]
         verbose_name = "Page"
         verbose_name_plural = "Pages"
+    
+    def __str__(self):
+        return self.title
 
 
 class Content(models.Model):
     """Model Content"""
     title = models.CharField(
-        null=False, blank=False, max_length=50,
+        null=False, 
+        blank=False, 
+        max_length=50,
         verbose_name="Title",
         help_text="Title")
-    page = models.ForeignKey(Page, on_delete=models.CASCADE, null=True)
-    carrousel = models.ForeignKey(Carrousel, on_delete=models.SET_NULL, blank=True, null=True)
+    page = models.ForeignKey(
+        Page, 
+        on_delete=models.CASCADE, 
+        null=True)
+    carrousel = models.ForeignKey(
+        Carrousel, 
+        on_delete=models.SET_NULL, 
+        blank=True, 
+        null=True)
     body = models.TextField(
         max_length=200,
         blank=True,
-        null=True,
-    )
+        null=True)
 
     class Meta:
         ordering = ["id"]
         verbose_name = "Content"
         verbose_name_plural = "Contents"
+
+    def __str__(self):
+        return self.title
 
 
 class FooterDescription(models.Model):
