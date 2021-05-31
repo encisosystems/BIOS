@@ -25,10 +25,31 @@ class TestCarrousel(TestCase):
         self.assertNotIn(self.carrousel, self.queryset)
 
 
-class TestTemplate(TestCase):
+class TestImage(TestCase):
 
     def setUp(self):
-        Template.objects.create(id=1, header_title='Index')
+        Image.objects.create(id=1, alt='600')
+        self.image = Image.objects.get(id=1)
+        self.queryset = Image.objects.all()
+    
+    def test_query_image(self):
+        image = self.image.alt
+        self.assertEqual(image, '600')
+    
+    def test_update_image(self):
+        self.image.alt = '700'
+        self.image.save()
+        self.assertEqual(self.image.alt, '700')
+
+    def test_delete_image(self):
+        self.image.delete()
+        self.assertNotIn(self.image, self.queryset)
+
+    
+class TestTemplate(TestCase):
+    
+    def setUp(self):
+        Template.objects.create(id=1, icon="icon.icon",logo="logo.png",is_active=True, header_title='Index')
         self.template = Template.objects.get(id=1)
         self.queryset = Template.objects.all()
 
