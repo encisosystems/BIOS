@@ -24,22 +24,13 @@ class City(models.Model):
 
 class TypeTest(models.Model):
     code = models.CharField(max_length=100, blank=True, verbose_name='Test Code', null=True)
-    name = models.CharField(max_length=100, blank=True, verbose_name='Test Name')
-    
+    name = models.CharField(max_length=100, blank=True, verbose_name='Test Name')    
+
     def __str__(self):
         return self.name
     class Meta:
         verbose_name = 'Test Type'
         verbose_name_plural = 'Test Types'
-
-class Test(models.Model):
-    typetest = models.ForeignKey(TypeTest, verbose_name='Choose Test Type', on_delete=models.PROTECT, blank=True, null=True)
-    result   = models.CharField(max_length=100, blank=True, verbose_name='Result')
-    def __str__(self):
-        return self.result
-    class Meta:
-        verbose_name = 'Test'
-        verbose_name_plural = 'Tests'
 
 class ConcepType(models.Model):
     code = models.IntegerField(blank=True, verbose_name='Concept Code', null=True)
@@ -60,7 +51,8 @@ class Person(models.Model):
     address        = models.CharField(max_length=250, blank=True, verbose_name='Address')
     job            = models.CharField(max_length=100, blank=True, verbose_name='Job Name', null=True)
     city           = models.ForeignKey(City, verbose_name='Choose City', on_delete=models.PROTECT, blank=True, null=True)
-    
+    email           = models.CharField(max_length=100, blank=True, verbose_name='Email Address', null=True)
+
     def __str__(self):
         return self.name
     class Meta:
@@ -71,7 +63,7 @@ class Official(models.Model):
     person      = models.ForeignKey(Person, verbose_name='Choose Person', on_delete=models.PROTECT,blank=True, null=True)
     university  = models.CharField(max_length=100, blank=True, verbose_name='University Name')
     specialty   = models.CharField(max_length=100, blank=True, verbose_name='Specialty Name')
-    url         = models.URLField(max_length=300, blank=True, verbose_name='Signature Url')
+    url         = models.ImageField(blank=True, verbose_name='Signature Imagen', upload_to="signatures")
 
     def __str__(self):
         return self.person.name
@@ -86,7 +78,7 @@ class Doctor(models.Model):
     official       = models.ForeignKey(Official, verbose_name='Choose Official', on_delete=models.PROTECT, blank=True, null=True)
     
     def __str__(self):
-        return self.rm
+        return self.resolution
     class Meta:
         verbose_name = 'Doctor'
         verbose_name_plural = 'Doctors'
@@ -122,22 +114,12 @@ class Assistance(models.Model):
     approved          = models.CharField(max_length=2, choices=BOOLEAN_CHOICES, verbose_name='Approved?', null=True, blank=True)
 
     def __str__(self):
-        return self.assistance.name
+        return self.assistance.person.name
     class Meta:
         verbose_name = 'Assistance'
         verbose_name_plural = 'Assistances'
 
-class CertificateAssistance(models.Model):
-    assistance  = models.ForeignKey(Assistance, verbose_name='Choose Assistance', on_delete=models.PROTECT, blank=True, null=True)
-    consecutive = models.CharField(max_length=30, blank=True, verbose_name='Consecutive')
-    date = models.DateField(auto_now_add=True, verbose_name="Certificate Of Assistance Date")
-    qr_url = models.URLField(max_length=200, verbose_name='QR Code Url', null=True, blank=True)
 
-    def __str__(self):
-        return self.consecutive
-    class Meta:
-        verbose_name = 'Certificate Assistance'
-        verbose_name_plural = 'Certificate Assistances'
 
 class Capacitation(models.Model):
     code = models.ForeignKey(Assistance, verbose_name='Choose Assistance', on_delete=models.PROTECT, blank=True, null=True)
@@ -145,12 +127,27 @@ class Capacitation(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name="Capacitation Date")
     name = models.CharField(max_length=100, blank=True, verbose_name='Capacitacion Name', null=True)
     address = models.CharField(max_length=100, blank=True, verbose_name='Address')
-
+    capacity_hours = models.IntegerField( blank=True,null=True, verbose_name='Intensidad de la capacitación')
+    
     def __str__(self):
         return self.name
     class Meta:
         verbose_name = 'Capacitation'
         verbose_name_plural = 'Capacitations'
+
+class CertificateAssistance(models.Model):
+    assistance  = models.ForeignKey(Assistance, verbose_name='Choose Assistance', on_delete=models.PROTECT, blank=True, null=True)
+    consecutive = models.CharField(max_length=30, blank=True, verbose_name='Consecutive')
+    date = models.DateField(auto_now_add=True, verbose_name="Certificate Of Assistance Date")
+    qr_url = models.URLField(max_length=200, verbose_name='QR Code Url', null=True, blank=True)
+    certificate_date = models.DateField( blank=True,null=True, verbose_name='Fecha de la Certificación')
+    capacitation = models.ForeignKey(Capacitation, verbose_name='Capacitación', on_delete=models.PROTECT, blank=True, null=True)
+
+    def __str__(self):
+        return self.consecutive
+    class Meta:
+        verbose_name = 'Certificate Assistance'
+        verbose_name_plural = 'Certificate Assistances'
 
 class Entity(models.Model):
     nit           = models.CharField(max_length=100, blank=True, verbose_name='Nit (Tributary Identification Number)', null=True)
@@ -168,22 +165,12 @@ class Entity(models.Model):
     class Meta:
         verbose_name = 'Entity'
         verbose_name_plural = 'Entities'
-class CapacityCertificate(models.Model):
-    consecutive = models.AutoField(blank=True, verbose_name='consecutive', auto_created=True, primary_key=True)
-    date = models.DateField(auto_now_add=True, verbose_name='Certificate Generation Date')
-    qr_url = models.URLField(max_length=200, verbose_name='Qr Url', null=True, blank=True)
 
-    def str(self):
-        return self.qr_url
-    class Meta:
-        verbose_name = 'Capacity Certificate'
-        verbose_name_plural = 'Capacity Certificates'
 
 class CertificateDoctor(models.Model):
     consecutive = models.CharField(max_length=100, verbose_name='Consecutive', blank=True, null=True)
     date        = models.DateField(auto_now_add=True, verbose_name="Certificate Date")
     diagnostic  = models.CharField(max_length=100, verbose_name='Diagnostic', blank=True, null=True)
-    result      = models.ForeignKey(Test, verbose_name='Choose Test Result', on_delete=models.PROTECT, blank=True, null=True)
     entity      = models.ForeignKey(Entity, verbose_name='Choose Entity', on_delete=models.PROTECT,blank=True, null=True)
     doctor      = models.ForeignKey(Doctor, verbose_name='Choose Doctor', on_delete=models.PROTECT,blank=True, null=True)
     manipulator = models.ForeignKey(Manipulator, verbose_name='Choose Manipulator', on_delete=models.PROTECT, blank=True, null=True)
@@ -195,3 +182,27 @@ class CertificateDoctor(models.Model):
     class Meta:
         verbose_name = 'Doctor Certificate'
         verbose_name_plural = 'Doctor Certificates'
+
+class CapacityCertificate(models.Model):
+    consecutive = models.AutoField(blank=True, verbose_name='consecutive', auto_created=True, primary_key=True)
+    date = models.DateField(auto_now_add=True, verbose_name='Certificate Generation Date')
+    qr_url = models.URLField(max_length=200, verbose_name='Qr Url', null=True, blank=True)
+    medicalcertificate  = models.ForeignKey(CertificateDoctor, verbose_name='Choose Official', on_delete=models.PROTECT, blank=True, null=True)
+    assistancecertificate  = models.ForeignKey(CertificateAssistance, verbose_name='Choose Certificate Assistance', on_delete=models.PROTECT, blank=True, null=True)
+
+    def str(self):
+        return self.qr_url
+    class Meta:
+        verbose_name = 'Capacity Certificate'
+        verbose_name_plural = 'Capacity Certificates'
+
+class Test(models.Model):
+    typetest = models.ForeignKey(TypeTest, verbose_name='Choose Test Type', on_delete=models.PROTECT, blank=True, null=True)
+    result   = models.CharField(max_length=100, blank=True, verbose_name='Result')
+    certificate = models.ForeignKey(CertificateDoctor, verbose_name='Choose Test Type', on_delete=models.PROTECT, blank=True, null=True)
+
+    def __str__(self):
+        return self.result
+    class Meta:
+        verbose_name = 'Test'
+        verbose_name_plural = 'Tests'
