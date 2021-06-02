@@ -17,8 +17,8 @@ class TemplateAdmin(admin.ModelAdmin):
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'page', 'description', 'is_blog')
-    fields = ('name', 'is_blog', 'page', 'description', )
+    list_display = ('__str__', 'page')
+    fields = ('name', 'page', )
     raw_id_fields = ('page', )
 
 #

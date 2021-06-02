@@ -42,7 +42,6 @@ PROJECT_APPS = [
 ]
 
 ADDONS = [
-    'ckeditor',
     # Pick the Addons you want
     # To use Webpack, uncomment next line
     # 'webpack_loader',

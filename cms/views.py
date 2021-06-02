@@ -45,7 +45,7 @@ def blogDetails(request):
 
 def slug_view(request, slug):
     page = get_object_or_404(Page, slug=slug) 
-    contents = Content.objects.filter(page=page) 
+    contents = Content.objects.filter(page=page)
     context={
         'page':page,
         'contents':contents, 

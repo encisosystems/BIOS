@@ -1,5 +1,4 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 
 
 class Carrousel(models.Model):
@@ -44,21 +43,19 @@ class Menu(models.Model):
         max_length=50
     )
     page = models.ForeignKey(Page, on_delete=models.CASCADE, null=True, blank=True)
-    description = RichTextField(
-        blank=True,
-        null=True,
-    )
-    is_blog = models.BooleanField()
 
     def __str__(self):
         return f'{self.name}'
 
+
 class Template(models.Model):
     icon = models.ImageField(
         upload_to='cms/icons',
+        null=True
     )
     logo = models.ImageField(
         upload_to='cms/logos',
+        null=True
     )
     header_title = models.CharField(
         max_length=50
@@ -82,7 +79,7 @@ class Content(models.Model):
         help_text="Title")
     page = models.ForeignKey(Page, on_delete=models.CASCADE, null=True)
     carrousel = models.ForeignKey(Carrousel, on_delete=models.SET_NULL, blank=True, null=True)
-    body = RichTextField(
+    body = models.TextField(
         blank=True,
         null=True,
     )
@@ -97,7 +94,7 @@ class Content(models.Model):
 
 
 class FooterDescription(models.Model):
-    description = RichTextField(
+    description = models.TextField(
         blank=True,
         null=True,
     )
