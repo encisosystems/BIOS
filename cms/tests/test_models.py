@@ -1,17 +1,18 @@
 from django.test import TestCase
 from cms.models import *
 
+
 # Create your tests here.
 
 class TestCarrousel(TestCase):
-    
+
     def setUp(self):
-        Carrousel.objects.create(id=1,title='Main')
-        self.carrousel= Carrousel.objects.get(id=1)
+        Carrousel.objects.create(id=1, title='Main')
+        self.carrousel = Carrousel.objects.get(id=1)
         self.queryset = Carrousel.objects.all()
 
     def test_query_carrousel(self):
-        carrousel= self.carrousel.title
+        carrousel = self.carrousel.title
         self.assertEqual(carrousel, 'Main')
 
     def test_update_carrousel(self):
@@ -23,11 +24,12 @@ class TestCarrousel(TestCase):
         self.carrousel.delete()
         self.assertNotIn(self.carrousel, self.queryset)
 
+
 class TestPage(TestCase):
-    
+
     def setUp(self):
-        Page.objects.create(id=1,title='One',slug='/hello')
-        self.page= Page.objects.get(id=1)
+        Page.objects.create(id=1, title='One', slug='/hello')
+        self.page = Page.objects.get(id=1)
         self.queryset = Page.objects.all()
 
     def test_query_carrousel(self):
@@ -45,11 +47,12 @@ class TestPage(TestCase):
         self.page.delete()
         self.assertNotIn(self.page, self.queryset)
 
+
 class TestContent(TestCase):
-    
+
     def setUp(self):
-        Content.objects.create(id=1,title='One',body='hello')
-        self.content= Content.objects.get(id=1)
+        Content.objects.create(id=1, title='One', body='hello')
+        self.content = Content.objects.get(id=1)
         self.queryset = Content.objects.all()
 
     def test_query_carrousel(self):
@@ -67,11 +70,12 @@ class TestContent(TestCase):
         self.content.delete()
         self.assertNotIn(self.content, self.queryset)
 
+
 class TestImage(TestCase):
-    
+
     def setUp(self):
-        Image.objects.create(id=1, alt='image 1', image = 'image1.png')
-        self.image= Image.objects.get(id=1)
+        Image.objects.create(id=1, alt='image 1', image='image1.png')
+        self.image = Image.objects.get(id=1)
         self.queryset = Image.objects.all()
 
     def test_query_image(self):
@@ -87,48 +91,51 @@ class TestImage(TestCase):
         self.image.delete()
         self.assertNotIn(self.image, self.queryset)
 
+
 class TestFooterDescription(TestCase):
 
-	def setUp(self):
-		FooterDescription.objects.create(id=1, description='Contacto')
-		self.footerdescription = FooterDescription.objects.get(id=1)
-		self.queryset = FooterDescription.objects.all()
+    def setUp(self):
+        FooterDescription.objects.create(id=1, description='Contacto')
+        self.footerdescription = FooterDescription.objects.get(id=1)
+        self.queryset = FooterDescription.objects.all()
 
-	def test_query_footerdescription(self):
-		footerdescription = self.footerdescription.description
-		self.assertEqual(footerdescription, 'Contacto')
+    def test_query_footerdescription(self):
+        footerdescription = self.footerdescription.description
+        self.assertEqual(footerdescription, 'Contacto')
 
-	def test_update_footerdescription(self):
-		self.footerdescription.description = 'Curso'
-		self.footerdescription.save()
-		self.assertEqual(self.footerdescription.description, 'Curso')
+    def test_update_footerdescription(self):
+        self.footerdescription.description = 'Curso'
+        self.footerdescription.save()
+        self.assertEqual(self.footerdescription.description, 'Curso')
 
-	def test_delete_footerdescription(self):
-		self.footerdescription.delete()
-		self.assertNotIn(self.footerdescription, self.queryset)
+    def test_delete_footerdescription(self):
+        self.footerdescription.delete()
+        self.assertNotIn(self.footerdescription, self.queryset)
+
 
 class TestMenu(TestCase):
 
-	def setUp(self):
-		Menu.objects.create(id=1, name='Servicios')
-		self.menu = Menu.objects.get(id=1)
-		self.queryset = Menu.objects.all()
+    def setUp(self):
+        Menu.objects.create(id=1, name='Servicios')
+        self.menu = Menu.objects.get(id=1)
+        self.queryset = Menu.objects.all()
 
-	def test_query_menu(self):
-		menu = self.menu.name
-		self.assertEqual(menu, 'Servicios')
+    def test_query_menu(self):
+        menu = self.menu.name
+        self.assertEqual(menu, 'Servicios')
 
-	def test_update_menu(self):
-		self.menu.name = 'Contacto'
-		self.menu.save()
-		self.assertEqual(self.menu.name, 'Contacto')
+    def test_update_menu(self):
+        self.menu.name = 'Contacto'
+        self.menu.save()
+        self.assertEqual(self.menu.name, 'Contacto')
 
-	def test_delete_menu(self):
-		self.menu.delete()
-		self.assertNotIn(self.menu, self.queryset)
+    def test_delete_menu(self):
+        self.menu.delete()
+        self.assertNotIn(self.menu, self.queryset)
+
 
 class TestTemplate(TestCase):
-    
+
     def setUp(self):
         Template.objects.create(id=1, is_active=True, header_title='Index')
         self.template = Template.objects.get(id=1)
@@ -146,4 +153,3 @@ class TestTemplate(TestCase):
     def test_delete_template(self):
         self.template.delete()
         self.assertNotIn(self.template, self.queryset)
-
