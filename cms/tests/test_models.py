@@ -133,23 +133,3 @@ class TestMenu(TestCase):
         self.menu.delete()
         self.assertNotIn(self.menu, self.queryset)
 
-
-class TestTemplate(TestCase):
-
-    def setUp(self):
-        Template.objects.create(id=1, is_active=True, header_title='Index')
-        self.template = Template.objects.get(id=1)
-        self.queryset = Template.objects.all()
-
-    def test_query_template(self):
-        template = self.template.header_title
-        self.assertEqual(template, 'Index')
-
-    def test_update_template(self):
-        self.template.header_title = 'MainTemplate'
-        self.template.save()
-        self.assertEqual(self.template.header_title, 'MainTemplate')
-
-    def test_delete_template(self):
-        self.template.delete()
-        self.assertNotIn(self.template, self.queryset)
