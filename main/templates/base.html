@@ -3,191 +3,152 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>
-        {% block title %}
-        
-        {% endblock title %}
-    </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>
+    {% block title %}
+      {{template.header_title}}
+    {% endblock title %}
+  </title>
+  <link rel="shortcut icon" href={% if template and template.icon %} {{template.icon.url}} {% endif %} type="image/x-icon">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" >
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Css Styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
 
-        {% block navbar %}
-        <div class="container">
-            <div class="inner-header">
-                <div class="row">
-                    <div></div>
-                    <div class="col-lg-2 col-md-2">
-                        <div class="logo">
-                            <a href="{% url 'home' %}">
-                                <img src="{% static 'img/logo.png' %}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 offset-lg-7 offset-md-7 text-right col-md-3">
-                        <ul class="nav-right">
-                            <li class="heart-icon">
-                                <a href="#">
-                                    <i class="icon_heart_alt"></i>
-                                    <span>1</span>
-                                </a>
-                            </li>
-                            <li class="cart-icon">
-                                <a href="{% url 'cart' %}">
-                                    <i class="icon_bag_alt"></i>
-                                    <span>3</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+{% block navbar %}
+<div class="container">
+  <div class="inner-header">
+    <div class="row">
+      <div></div>
+      <div class="col-lg-2 col-md-2">
+        <div class="logo">
+          <a href="{% url 'home' %}">
+            <img src="{% if template.logo %}{{ template.logo.url}}{%endif%}" alt="">
+          </a>
         </div>
-        
-        <div class="nav-item">
-            <div class="container">
-                <nav class="nav-menu mobile-menu">
-                    <ul>
-                        <li class="active"><a href="{% url 'home' %}">Inicio</a></li>
-                        <li><a href="{% url 'shop' %}">Tienda</a></li>
-                        <li><a href="{% url 'blog' %}">Blog</a></li>
-                        <li><a href="#">Contacto</a></li>
-                        <li><a href="#">Paginas</a>
+      </div>
+      <div class="col-lg-3 offset-lg-7 offset-md-7 text-right col-md-3">
+        <ul class="nav-right">
+          <li class="heart-icon">
+            <a href="#">
+              <i class="icon_heart_alt"></i>
+              <span>1</span>
+            </a>
+          </li>
+          <li class="cart-icon">
+            <a href="{% url 'cart' %}">
+              <i class="icon_bag_alt"></i>
+              <span>3</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-item">
+  <div class="container">
+    <nav class="nav-menu mobile-menu">
+      <ul>
+        {%for menu in menu_items%}
+        <li class="active"><a href="{% if menu.page %} /blog/{{menu.page.slug}} {% endif %} ">{{menu.name}}</a></li>
+        {% endfor%}
+
+        <!--        <li><a href="{% url 'shop' %}">Tienda</a></li>-->
+        <!--        <li><a href="{% url 'blog' %}">Blog</a></li>-->
+        <!--        <li><a href="#">Contacto</a></li>-->
+        <li><a href="#">Paginas</a>
                             <ul class="dropdown">
                                 <li><a href="{% url 'blog-details' %}">Detalles del blog </a></li>
                                 <li><a href="{% url 'cart' %}">Carrito de compras</a></li>
                                 <li><a href="{% url 'checkout' %}">Verificar</a></li>
-                                <li><a href="{% url 'manipulator' %}">Listado de Manipuladores</a></li>                                
-                            </ul> 
-                        </li>
-                    </ul>
-                </nav>
-                <div id="mobile-menu-wrap">
-                </div>
-            </div>
+                                <li><a href="{% url 'manipulator' %}">Listado de Manipuladores</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div id="mobile-menu-wrap">
+    </div>
+  </div>
+</div>
+
+{% endblock navbar %}
+
+{% block content %}
+
+{% endblock content %}
+
+{% block partner %}
+
+<!-- Partner Logo Section Begin -->
+<div class="partner-logo">
+  <div class="container">
+    <div class="logo-carousel owl-carousel">
+      <div class="logo-item">
+        <div class="tablecell-inner">
+          <img src="#" alt="">
         </div>
-       
-        {% endblock navbar %}
+      </div>
+      <div class="logo-item">
+        <div class="tablecell-inner">
+          <img src="#" alt="">
+        </div>
+      </div>
+      <div class="logo-item">
+        <div class="tablecell-inner">
+          <img src="#" alt="">
+        </div>
+      </div>
+      <div class="logo-item">
+        <div class="tablecell-inner">
+          <img src="#" alt="">
+        </div>
+      </div>
+      <div class="logo-item">
+        <div class="tablecell-inner">
+          <img src="#" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Partner Logo Section End -->
 
-        {% block content %}
+{% endblock partner%}
 
-        {% endblock content %}
+{% block footer %}
+<footer class="footer-section">
+  <div class="container">
+    <div class="row">
 
-        {% block partner %}
+      {% for footer_description in footer_list %}
+      {{ footer_description.description | safe }}
+      {% endfor %}
 
-            <!-- Partner Logo Section Begin -->
-        <div class="partner-logo">
-                <div class="container">
-                    <div class="logo-carousel owl-carousel">
-                        <div class="logo-item">
-                            <div class="tablecell-inner">
-                                <img src="#" alt="">
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="tablecell-inner">
-                                <img src="#" alt="">
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="tablecell-inner">
-                                <img src="#" alt="">
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="tablecell-inner">
-                                <img src="#" alt="">
-                            </div>
-                        </div>
-                        <div class="logo-item">
-                            <div class="tablecell-inner">
-                                <img src="#" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Partner Logo Section End -->
+    </div>
+  </div>
+</footer>
+{% endblock footer %}
 
-        {% endblock partner%}
-
-        {% block footer %}
-        <footer class="footer-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="footer-left">
-                            <div class="footer-logo">
-                                <a href="#"><img src="{% static 'img/Logo-white-30x87.png' %}" alt=""></a>
-                            </div>
-                            <ul>
-                                <li>Dirección: 60-49 Road 11378</li>
-                                <li>Telefono: +65 11.188.888</li>
-                                <li>Correo: info@encisosystems.com</li>
-                            </ul>
-                            <div class="footer-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 offset-lg-1">
-                        <div class="footer-widget">
-                            <h5>Information</h5>
-                            <ul>
-                                <li><a href="#">Acerca de</a></li>
-                                <li><a href="#">Contacto</a></li>
-                                <li><a href="#">Servicios</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="footer-widget">
-                            <h5>Mi Cuenta</h5>
-                            <ul>
-                                <li><a href="#">Mi cuenta</a></li>
-                                <li><a href="#">Contacto</a></li>
-                                <li><a href="#">Carro de compras</a></li>
-                                <li><a href="#">Tienda</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="newslatter-item">
-                            <h5>Únase a nuestro boletín ahora </h5>
-                            <p>Reciba actualizaciones por correo electrónico sobre nuestra última tienda y ofertas especiales.</p>
-                            <form action="#" class="subscribe-form">
-                                <input type="text" placeholder="Ingrese su correo">
-                                <button type="button">Suscribir</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        {% endblock footer %}
-
-     <!-- Js Plugins-->  
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <script src="{% static 'js/jquery.slicknav.js' %}"></script>
-     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-     <script src="https://use.fontawesome.com/a1a3d1a3f5.js"></script>
-     <script src="{% static 'js/main.js' %}"></script>
+<!-- Js Plugins-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="https://use.fontawesome.com/a1a3d1a3f5.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
 
 </body>
 
