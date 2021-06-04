@@ -86,3 +86,43 @@ class TestImage(TestCase):
     def test_delete_image(self):
         self.image.delete()
         self.assertNotIn(self.image, self.queryset)
+
+class TestFooterDescription(TestCase):
+
+	def setUp(self):
+		FooterDescription.objects.create(id=1, description='Contacto')
+		self.footerdescription = FooterDescription.objects.get(id=1)
+		self.queryset = FooterDescription.objects.all()
+
+	def test_query_footerdescription(self):
+		footerdescription = self.footerdescription.description
+		self.assertEqual(footerdescription, 'Contacto')
+
+	def test_update_footerdescription(self):
+		self.footerdescription.description = 'Curso'
+		self.footerdescription.save()
+		self.assertEqual(self.footerdescription.description, 'Curso')
+
+	def test_delete_footerdescription(self):
+		self.footerdescription.delete()
+		self.assertNotIn(self.footerdescription, self.queryset)
+
+class TestMenu(TestCase):
+
+	def setUp(self):
+		Menu.objects.create(id=1, name='Servicios')
+		self.menu = Menu.objects.get(id=1)
+		self.queryset = Menu.objects.all()
+
+	def test_query_menu(self):
+		menu = self.menu.name
+		self.assertEqual(menu, 'Servicios')
+
+	def test_update_menu(self):
+		self.menu.name = 'Contacto'
+		self.menu.save()
+		self.assertEqual(self.menu.name, 'Contacto')
+
+	def test_delete_menu(self):
+		self.menu.delete()
+		self.assertNotIn(self.menu, self.queryset)
