@@ -14,4 +14,3 @@ class TestShopViews(TestCase):
         response = client.get(reverse('shop'))
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response,'shop.html')
-        
