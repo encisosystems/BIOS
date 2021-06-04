@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- JS -->
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+    </script>
 </head>
 
 <body>
@@ -188,6 +192,7 @@
      <script src="{% static 'js/owl.carousel.min.js' %}"></script>
      <script src="https://use.fontawesome.com/a1a3d1a3f5.js"></script>
      <script src="{% static 'js/main.js' %}"></script>
+     <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 
 </body>
 
