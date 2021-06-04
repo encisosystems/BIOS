@@ -61,7 +61,7 @@ class Template(models.Model):
         max_length=50
     )
     menu_items = models.ManyToManyField(Menu)
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.header_title}'
