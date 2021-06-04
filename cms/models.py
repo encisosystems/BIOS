@@ -74,15 +74,23 @@ class Template(models.Model):
 class Content(models.Model):
     """Model Content"""
     title = models.CharField(
-        null=False, blank=False, max_length=50,
+        null=False, 
+        blank=False, 
+        max_length=50,
         verbose_name="Title",
         help_text="Title")
-    page = models.ForeignKey(Page, on_delete=models.CASCADE, null=True)
-    carrousel = models.ForeignKey(Carrousel, on_delete=models.SET_NULL, blank=True, null=True)
+    page = models.ForeignKey(
+        Page, 
+        on_delete=models.CASCADE, 
+        null=True)
+    carrousel = models.ForeignKey(
+        Carrousel, 
+        on_delete=models.SET_NULL, 
+        blank=True, 
+        null=True)
     body = models.TextField(
         blank=True,
-        null=True,
-    )
+        null=True)
 
     class Meta:
         ordering = ["id"]
@@ -91,6 +99,7 @@ class Content(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
 
 
 class FooterDescription(models.Model):
