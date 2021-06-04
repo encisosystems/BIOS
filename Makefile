@@ -31,9 +31,6 @@ test:
 testapp:
 	docker exec -it bios ./manage.py test $(app) --noinput -v 3
 
-testtag:
-	docker exec -it bios ./manage.py test --no-input --keepdb --tag=$(tag) -v 2
-
 statics:
 	docker exec -it bios ./manage.py collectstatic --noinput
 

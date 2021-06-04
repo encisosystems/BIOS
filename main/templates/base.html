@@ -7,10 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>
     {% block title %}
-      {{template.header_title}}
+    {{template.header_title}}
     {% endblock title %}
   </title>
-  <link rel="shortcut icon" href={% if template and template.icon %} {{template.icon.url}} {% endif %} type="image/x-icon">
+  <link rel="shortcut icon" href={% if template and template.icon %} {{template.icon.url}} {% endif %}
+        type="image/x-icon">
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -23,6 +24,10 @@
   <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- JS -->
+  <script type="text/javascript">
+    var user = '{{request.user}}'
+  </script>
 </head>
 
 <body>
@@ -71,11 +76,11 @@
         <!--        <li><a href="{% url 'blog' %}">Blog</a></li>-->
         <!--        <li><a href="#">Contacto</a></li>-->
         <li><a href="#">Paginas</a>
-                            <ul class="dropdown">
-                                <li><a href="{% url 'blog-details' %}">Detalles del blog </a></li>
-                                <li><a href="{% url 'cart' %}">Carrito de compras</a></li>
-                                <li><a href="{% url 'checkout' %}">Verificar</a></li>
-                                <li><a href="{% url 'manipulator' %}">Listado de Manipuladores</a></li>
+          <ul class="dropdown">
+            <li><a href="{% url 'blog-details' %}">Detalles del blog </a></li>
+            <li><a href="{% url 'cart' %}">Carrito de compras</a></li>
+            <li><a href="{% url 'checkout' %}">Verificar</a></li>
+            <li><a href="{% url 'manipulator' %}">Listado de Manipuladores</a></li>
           </ul>
         </li>
       </ul>
@@ -149,6 +154,7 @@
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
 <script src="https://use.fontawesome.com/a1a3d1a3f5.js"></script>
 <script src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 
 </body>
 
