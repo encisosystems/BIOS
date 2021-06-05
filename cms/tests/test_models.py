@@ -67,10 +67,10 @@ class TestContent(TestCase):
         self.content.delete()
         self.assertNotIn(self.content, self.queryset)
 
-class Image(TestCase):
+class TestImage(TestCase):
     
     def setUp(self):
-        Image.objects.create(id=1,title='Main', alt='image 1', image = 'image1.png', carrousel = '1')
+        Image.objects.create(id=1,title='Main', alt='image 1', image = 'image1.png')
         self.image= Image.objects.get(id=1)
         self.queryset = Image.objects.all()
 
