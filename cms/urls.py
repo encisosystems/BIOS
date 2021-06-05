@@ -1,8 +1,9 @@
 from django.urls import path
-from cms.views import blog, blogDetails
+from cms.views import blog, blogDetails,slug_view
 
 
 urlpatterns = [
     path('', blog, name="blog"),
     path('blog-details', blogDetails, name="blog-details"),
+    path('<slug:slug>', slug_view, name="page-cms"),
 ]

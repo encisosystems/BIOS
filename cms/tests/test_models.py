@@ -1,17 +1,18 @@
 from django.test import TestCase
 from cms.models import *
 
+
 # Create your tests here.
 
 class TestCarrousel(TestCase):
-    
+
     def setUp(self):
-        Carrousel.objects.create(id=1,title='Main')
-        self.carrousel= Carrousel.objects.get(id=1)
+        Carrousel.objects.create(id=1, title='Main')
+        self.carrousel = Carrousel.objects.get(id=1)
         self.queryset = Carrousel.objects.all()
 
     def test_query_carrousel(self):
-        carrousel= self.carrousel.title
+        carrousel = self.carrousel.title
         self.assertEqual(carrousel, 'Main')
 
     def test_update_carrousel(self):
@@ -23,11 +24,12 @@ class TestCarrousel(TestCase):
         self.carrousel.delete()
         self.assertNotIn(self.carrousel, self.queryset)
 
+
 class TestPage(TestCase):
-    
+
     def setUp(self):
-        Page.objects.create(id=1,title='One',slug='/hello')
-        self.page= Page.objects.get(id=1)
+        Page.objects.create(id=1, title='One', slug='/hello')
+        self.page = Page.objects.get(id=1)
         self.queryset = Page.objects.all()
 
     def test_query_carrousel(self):
@@ -46,10 +48,10 @@ class TestPage(TestCase):
         self.assertNotIn(self.page, self.queryset)
 
 class TestContent(TestCase):
-    
+
     def setUp(self):
-        Content.objects.create(id=1,title='One',body='hello')
-        self.content= Content.objects.get(id=1)
+        Content.objects.create(id=1, title='One', body='hello')
+        self.content = Content.objects.get(id=1)
         self.queryset = Content.objects.all()
 
     def test_query_carrousel(self):
@@ -68,27 +70,24 @@ class TestContent(TestCase):
         self.assertNotIn(self.content, self.queryset)
 
 class TestImage(TestCase):
-    
+
     def setUp(self):
-        Image.objects.create(id=1,title='Main', alt='image 1', image = 'image1.png')
-        self.image= Image.objects.get(id=1)
+        Image.objects.create(id=1, alt='image 1', image='image1.png')
+        self.image = Image.objects.get(id=1)
         self.queryset = Image.objects.all()
 
     def test_query_image(self):
-        image = self.image.title
-        self.assertEqual(image, 'Main')
+        image = self.image.alt
+        self.assertEqual(image, 'image 1')
 
     def test_update_image(self):
-        self.image.title = 'image1 Update'
-        self.image.alt = 'image 1 update'
-        self.image.alt = 'image1.png'
+        self.image.alt = 'image 1 Update'
         self.image.save()
-        self.assertEqual(self.image.title, 'image1 Update')
+        self.assertEqual(self.image.alt, 'image 1 Update')
 
     def test_delete_image(self):
         self.image.delete()
         self.assertNotIn(self.image, self.queryset)
-
 
 class TestTemplate(TestCase):
 
