@@ -1,5 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from cms.models import *
 
 def blog(request):
     return render(request, "blog.html")
@@ -41,3 +42,12 @@ def blogDetails(request):
         'links': links,
         'related_news': related_news,
     })
+
+def slug_view(request, slug):
+    page = get_object_or_404(Page, slug=slug) 
+    contents = Content.objects.filter(page=page)
+    context={
+        'page':page,
+        'contents':contents, 
+    }
+    return render (request, 'slug.html', context) 
