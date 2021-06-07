@@ -53,6 +53,19 @@ if os.environ.get('DATABASE_URL', ''):
     DATABASES = {
         'default': dj_database_url.config()
     }
+# Database for CI/CD github actions
+elif os.environ.get('GITHUB_WORKFLOW'):
+    DATABASES = {
+        'default': {
+           'ENGINE': 'django.db.backends.postgresql',
+           'NAME': 'postgres',
+           'USER': 'postgres',
+           'PASSWORD': 'postgres',
+           'HOST': '127.0.0.1',
+           'PORT': '5432',
+        }
+    }
+
 else:
     DATABASES = {
         'default': {

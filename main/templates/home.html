@@ -9,14 +9,17 @@
 
 {% block content %}
 
+
+
 <!-- Hero Section Begin -->
 <section class="hero-section">
     <div class="hero-items owl-carousel">
-        <div class="single-hero-items set-bg" data-setbg="static/img/hero-1.jpg">
-            
+        {% for image in images%} 
+       
+        <div class="single-hero-items set-bg" data-setbg="media/{{image.image}}"> 
         </div>
-        <div class="single-hero-items set-bg" data-setbg="static/img/hero-2.jpg">
-        </div>
+        {% endfor %}
+
     </div>
 </section>
 <!-- Hero Section End -->
@@ -265,7 +268,7 @@
                         </div>
                         <div class="sb-text">
                             <h6>Envío gratis</h6>
-                            <p>Por todo el por compras mayores a $50.000</p>
+                            <p>Por todo el por compras mayores a $60.000</p>
                         </div>
                     </div>
                 </div>

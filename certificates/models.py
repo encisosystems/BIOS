@@ -188,7 +188,7 @@ class CapacityCertificate(models.Model):
     date = models.DateField(auto_now_add=True, verbose_name='Certificate Generation Date')
     qr_url = models.URLField(max_length=200, verbose_name='Qr Url', null=True, blank=True)
     medicalcertificate  = models.ForeignKey(CertificateDoctor, verbose_name='Choose Official', on_delete=models.PROTECT, blank=True, null=True)
-    assistancecertificate  = models.ForeignKey(CertificateAssistance, verbose_name='Choose Official', on_delete=models.PROTECT, blank=True, null=True)
+    assistancecertificate  = models.ForeignKey(CertificateAssistance, verbose_name='Choose Certificate Assistance', on_delete=models.PROTECT, blank=True, null=True)
 
     def str(self):
         return self.qr_url
