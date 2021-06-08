@@ -6,13 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>
-    {% block title %}
-    {{template.header_title}}
-    {% endblock title %}
-  </title>
-  <link rel="shortcut icon" href={% if template and template.icon %} {{template.icon.url}} {% endif %}
-        type="image/x-icon">
+        {% block title %}
 
+        {% endblock title %}
+    </title>
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
@@ -40,7 +37,7 @@
       <div class="col-lg-2 col-md-2">
         <div class="logo">
           <a href="{% url 'home' %}">
-            <img src="{% if template.logo %}{{ template.logo.url}}{%endif%}" alt="">
+            <img src="{% static 'img/logo.png' %}" alt="">
           </a>
         </div>
       </div>
@@ -65,30 +62,27 @@
 </div>
 
 <div class="nav-item">
-  <div class="container">
-    <nav class="nav-menu mobile-menu">
-      <ul>
-        {%for menu in menu_items%}
-        <li class="active"><a href="{% if menu.page %} /blog/{{menu.page.slug}} {% endif %} ">{{menu.name}}</a></li>
-        {% endfor%}
-
-        <!--        <li><a href="{% url 'shop' %}">Tienda</a></li>-->
-        <!--        <li><a href="{% url 'blog' %}">Blog</a></li>-->
-        <!--        <li><a href="#">Contacto</a></li>-->
-        <li><a href="#">Paginas</a>
-          <ul class="dropdown">
-            <li><a href="{% url 'blog-details' %}">Detalles del blog </a></li>
-            <li><a href="{% url 'cart' %}">Carrito de compras</a></li>
-            <li><a href="{% url 'checkout' %}">Verificar</a></li>
-            <li><a href="{% url 'manipulator' %}">Listado de Manipuladores</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    <div id="mobile-menu-wrap">
-    </div>
-  </div>
-</div>
+            <div class="container">
+                <nav class="nav-menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="{% url 'home' %}">Inicio</a></li>
+                        <li><a href="{% url 'shop' %}">Tienda</a></li>
+                        <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Paginas</a>
+                            <ul class="dropdown">
+                                <li><a href="{% url 'blog-details' %}">Detalles del blog </a></li>
+                                <li><a href="{% url 'cart' %}">Carrito de compras</a></li>
+                                <li><a href="{% url 'checkout' %}">Verificar</a></li>
+                                <li><a href="{% url 'manipulator' %}">Listado de Manipuladores</a></li>                                
+                            </ul> 
+                        </li>
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap">
+                </div>
+            </div>
+        </div>
 
 {% endblock navbar %}
 
@@ -136,16 +130,60 @@
 
 {% block footer %}
 <footer class="footer-section">
-  <div class="container">
-    <div class="row">
-
-      {% for footer_description in footer_list %}
-      {{ footer_description.description | safe }}
-      {% endfor %}
-
-    </div>
-  </div>
-</footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="footer-left">
+                            <div class="footer-logo">
+                                <a href="#"><img src="{% static 'img/Logo-white-30x87.png' %}" alt=""></a>
+                            </div>
+                            <ul>
+                                <li>Dirección: 60-49 Road 11378</li>
+                                <li>Telefono: +65 11.188.888</li>
+                                <li>Correo: info@encisosystems.com</li>
+                            </ul>
+                            <div class="footer-social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 offset-lg-1">
+                        <div class="footer-widget">
+                            <h5>Information</h5>
+                            <ul>
+                                <li><a href="#">Acerca de</a></li>
+                                <li><a href="#">Contacto</a></li>
+                                <li><a href="#">Servicios</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="footer-widget">
+                            <h5>Mi Cuenta</h5>
+                            <ul>
+                                <li><a href="#">Mi cuenta</a></li>
+                                <li><a href="#">Contacto</a></li>
+                                <li><a href="#">Carro de compras</a></li>
+                                <li><a href="#">Tienda</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="newslatter-item">
+                            <h5>Únase a nuestro boletín ahora </h5>
+                            <p>Reciba actualizaciones por correo electrónico sobre nuestra última tienda y ofertas especiales.</p>
+                            <form action="#" class="subscribe-form">
+                                <input type="text" placeholder="Ingrese su correo">
+                                <button type="button">Suscribir</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
 {% endblock footer %}
 
 <!-- Js Plugins-->
