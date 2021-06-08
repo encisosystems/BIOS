@@ -31,7 +31,19 @@ DEPENDENCIES_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'shop.apps.StoreConfig',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+    'modelcluster',
+    'taggit',
 ]
 
 PROJECT_APPS = [
@@ -62,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'bios.urls'
@@ -128,3 +141,4 @@ SERVER_EMAIL = 'Server <server@bios.com>'
 # ADMINS = [('Admin', 'admin@bios.com')]
 # MANAGERS = [('Admin', 'admin@bios.com')]
 
+WAGTAIL_SITE_NAME = 'BIOS'
