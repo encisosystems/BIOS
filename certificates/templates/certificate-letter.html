@@ -7,12 +7,12 @@ Carta cerficado-BIOS
 {% endblock title %}
 
 {% block content %}
-<div class="container mt-3 mb-3 border border-primary">
+<div class="container mt-3 mb-3 border border-dark rounded">
     <div class="row justify-content-center" style="background-color: #DAEDFB;">
         <div class="col-sm-5">
             <img src="{% static 'img/certificates/CertificateLogo.PNG' %}" />
-            <div class="border border-primary text-center" style="background-color: #ffffff;">
-                No. {{certificate.consecutive}}
+            <div class="text-center" style="background-color: #ffffff;">
+                <span class="text-danger font-weight-bold">No.</span> {{certificate.consecutive}}
             </div>
         </div>
         <div class="col-sm-7 ">
@@ -21,37 +21,36 @@ Carta cerficado-BIOS
             <p class="text-right  p-0  m-0">{{certificate.capacitation.official.university}}</p>
             <p class="text-right  p-0  m-0">{{certificate.capacitation.official.person.phone}}</p>
             <p class="text-right  p-0  m-0">Email:{{certificate.capacitation.official.person.email}}</p>
-            <p class="text-right p-0 mt-1 m-0"><small><strong>Capacitaciones en BPM <br> y Manipulacion de
-                        Alimentos</strong></small></p>
+            <p class="text-right p-0 mt-1 m-0"><small><strong>Capacitaciones en BPM y <br/> Manipulacion de Alimentos</strong></small></p>
         </div>
     </div>
     <div class="row justify-content-center mt-5">
         <div class="col-sm-12">
-            <h3 class="text-center p-0 m-0"> {{certificate.capacitation.official.person.name}} {{certificate.capacitation.official.person.last_name}}</h3>
-            <h4 class="text-center p-0 m-0">{{certificate.capacitation.official.person.type_document.name}} {{certificate.capacitation.official.person.identification}}</h4>
-            <h4 class="text-center p-0 m-0">Instructor</h4>
+            <h3 class="text-center text-uppercase p-0 m-0"> {{certificate.capacitation.official.person.name}} {{certificate.capacitation.official.person.last_name}}</h3>
+            <h4 class="text-center p-0 m-0">CC No. {{certificate.capacitation.official.person.type_document.name}} {{certificate.capacitation.official.person.identification}}</h4>
+            <h5 class="text-center p-0 m-0">Capacitador en Manipulación de alimentos</h5>
         </div>
     </div>
     <div class="row justify-content-center mt-5">
         <div class="col-sm-12">
-            <h3 class="text-center p-0 m-0">Certifica</h3>
+            <h4 class="text-center text-uppercase p-0 m-0">Certifica</h4>
             <p class="text-justify p-0 mt-5">
-                Que <b>{{certificate.assistance.assistance.person.name}} {{certificate.assistance.assistance.person.last_name}} </b> identificado(a) con <b>{{certificate.assistance.assistance.person.type_document.name}} No. {{certificate.assistance.assistance.person.identification}}</b> ,
+                Que <b class="text-uppercase">{{certificate.assistance.assistance.person.name}} {{certificate.assistance.assistance.person.last_name}} </b> identificado(a) con <b>{{certificate.assistance.assistance.person.type_document.name}} </b> No. <b>{{certificate.assistance.assistance.person.identification}}</b> ,
                 realizó la capacitación en manipulación de alimentos y buenas prácticas de manufactura
-                realizado el dia <b>{{certificate.capacitation.date}}</b>, con una intensidad de <b>{{certificate.capacitation.capacity_hours}}</b>.
+                realizado el día <b>{{certificate.capacitation.date}}</b>, con una intensidad de (<b>{{certificate.capacitation.capacity_hours}}</b>) horas.
             </p>
             <p class="text-justify p-0 mt-3">
-                Esta certificación se expide a solicitud del interesado en dia {{certificate.capacitation.date}}
+                Esta certificación se expide a solicitud del interesado el día {% now "d F Y" %}
             </p>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="text-center">
+    <div class="row justify-content-left">
+        <div class="col-md-12 text-left">
+            <div class="text-left m-3 text-left">
                 <img  src="/media/{{certificate.capacitation.official.url}}" class="img-fluid" width="170px" height="100px" />
-                <p class="text-center p-0 m-0"><b>  {{certificate.capacitation.official.person.name}} {{certificate.capacitation.official.person.last_name}}</b></p>
-                <p class="text-center p-0 m-0">{{certificate.capacitation.official.person.type_document.name}} {{certificate.capacitation.official.person.identification}}</p>
-                <p class="text-center p-0 m-0">{{Instructor}}</p>
+                <p class="text-left text-uppercase p-0 m-0"><b>  {{certificate.capacitation.official.person.name}} {{certificate.capacitation.official.person.last_name}}</b></p>
+                <p class="text-left p-0 m-0 mb-0">CC No. {{certificate.capacitation.official.person.type_document.name}} {{certificate.capacitation.official.person.identification}}</p>
+                <p class="text-left p-0 mb-0">Capacitador en Manipulación de alimentos</p>
             </div>
 
         </div>
