@@ -21,7 +21,7 @@
           </h6>
           <p><i class="fa fa-whatsapp"></i> 301 319 2047</p>
         </div>
-        <h6 class="text-left text-uppercase text-info font-weight-bold display-6 m-3">FECHA EXPEDICIÓN</h6>
+        <h6 class="text-left text-uppercase text-info font-weight-bold display-6 ml-3">FECHA EXPEDICIÓN</h6>
         <h6 class="text-left text-danger pl-3">{{capacity.assistancecertificate.date}}</h6>
         <h6 class="text-center mt-3">
           <img
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div class="col mt-3">
+    <div class="col mt-3 ">
       <div class="card" style="width: 20rem">
         <img
           src="{% static 'img/logo.png' %}"
@@ -45,11 +45,10 @@
         />
         <div class="card-body">
           <h6 class="display-5"><span class="text-danger font-weight-bold">No.</span> {{capacity.consecutive}}</h6>
-          <p class="h6">
-            <small
-              >En cumplimiento de la resolución 2674 de 2013 articulo 36
+          <p class="h6 text-center">
+            <small>En cumplimiento de la resolución 2674 de 2013 articulo 36
               parágrados 1 y 2.</small></p>
-              <p class="text-center">Hace constar que:</p>
+              <p class="text-center mb-0">Hace constar que:</p>
         </div>
         <h6 class="text-center text-uppercase">
           {{capacity.assistancecertificate.assistance.assistance.person.name}}
@@ -68,12 +67,12 @@
           <p class="text-center">
             <img
             src="/media/{{capacity.assistancecertificate.capacitation.official.url}}"
-            class="img-thumbnail border-0 mx-auto"
+            class="img-thumbnail border-0 mb-0 mx-auto"
             alt="Firma Administrativo"
             width="150"
             height="150"
           />
-          <p class="h6 p-0 text-center"><small>Firma Capacitador</small></p>
+          <p class="h6 mt-0 p-0 text-center"><small>Firma Capacitador</small></p>
           </p>
       </div>
     </div>
