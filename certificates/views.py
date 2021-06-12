@@ -1,5 +1,8 @@
+from django.http import request, response
 from django.shortcuts import render
-from .models import CapacityCertificate, CertificateAssistance, CertificateDoctor, ConcepType, Test
+from django.http import HttpResponseRedirect
+from django.forms import Form
+from .models import CapacityCertificate, CertificateAssistance, CertificateDoctor, ConcepType, Person, Test
 from django.views import generic
 
 #class CertificateDoctorView(generic.DetailView):
@@ -21,11 +24,17 @@ def certificateDoctor(request,certificate_id):
 class CarnetView(generic.DetailView):
     model = CapacityCertificate
     context_object_name = 'capacity'
-    template_name = 'cma-carnet.html' 
+    template_name = 'cma-carnet.html'
 
-def manipulator(request, article=None):    
+def manipulator(request):    
     certificatesDoctorList = CertificateDoctor.objects.order_by()
     certificatesAssistanceList = CertificateAssistance.objects.order_by()
     carnetList = CapacityCertificate.objects.order_by()
-    
-    return render(request, 'manipulator.html', {'medicalList': certificatesDoctorList, 'assistanceList': certificatesAssistanceList, 'carnetList':carnetList})
+    if request.method == "POST":
+        searched  = request.POST['searched']
+        cc_id = Person.objects.filter(identification__contains=searched)
+        return render(request, 'manipulator.html',{'cc_id':cc_id,'searched':searched,'medicalList': certificatesDoctorList, 'assistanceList': certificatesAssistanceList, 'carnetList':carnetList})
+    else:
+        return render(request, 'manipulator.html', {})
+
+    #return render(request, 'manipulator.html', {'object':obj,'medicalList': certificatesDoctorList, 'assistanceList': certificatesAssistanceList, 'carnetList':carnetList})

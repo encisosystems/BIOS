@@ -10,13 +10,13 @@
 
     <div class="container border border-primary mt-3 rounded">
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <div class="col-sm-5 logo">
+            <div class="col-sm-5 logo mt-2">
                 <img src="{% static 'img/logo.png' %}" width="200px"/>
             </div>
-            <div class="col-sm-7 ">
+            <div class="col-sm-7 mt-2">
                 <h4 class="justify-content-center">Certificado Médico</h4>
                 <h4>Manipulador de Alimentos</h4>
-                <div class="border border-primary text-center rounded" style="background-color: #ffffff;">
+                <div class="border border-primary text-center rounded mt-2 bg-light" class="bg-light">
                     No. {{certificate.consecutive}}
                 </div>
             </div>
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h2 class="m-1">Información Personal</h2>
+            <h3 class="m-1">Información Personal</h3>
         </div>
         <div class="row justify-content-center">
 
@@ -61,7 +61,7 @@
                         <span class="text-right">{{certificate.manipulator.person.name}} {{certificate.manipulator.person.last_name}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="mr-15 font-weight-bold">Tipo Doc Identidad:</span>
+                        <span class="mr-15 font-weight-bold">Tipo de Documento:</span>
                         <span class="text-right">{{certificate.manipulator.person.type_document}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
@@ -81,7 +81,7 @@
                         <span class="text-right">{{certificate.manipulator.person.job}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="mr-15 font-weight-bold">Doc Identidad:</span>
+                        <span class="mr-15 font-weight-bold">Documento de Identidad:</span>
                         <span class="text-right">{{certificate.manipulator.person.identification}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h2>Laboratorios</h2>
+            <h3>Laboratorios</h3>
         </div>
         <div class="row justify-content-center">
 
@@ -110,7 +110,7 @@
         </div>
 
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h2>Diagnostico médico</h2>
+            <h3>Diagnostico médico</h3>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -118,7 +118,7 @@
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h2>Diagnostico médico</h2>
+            <h3>Diagnostico médico</h3>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -144,10 +144,7 @@
                
                 {% else %}
                 <p>There are Concepts available.</p>
-                {% endif %} 
-
-                    
-                 
+                {% endif %}   
             </div>
         </div>
     </div>

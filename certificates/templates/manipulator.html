@@ -1,87 +1,75 @@
 {% extends 'base.html' %} {% block content %}
-<ul class="list-group list-group-flush">
-  <div class="bd-manipulator">
-    {% if medicalList %}
-    <h3>Certificados Medicos</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Fecha</th> 
-          <th scope="col">Nombre del Manipulador</th> 
-          <th scope="col">Opciones</th> 
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {% for certificate in medicalList %}
-          <th scope="row">{{certificate.id}}</th>
-          <td>{{certificate.date}}</td>
-          <td>{{certificate.manipulator.person.name}} {{certificate.manipulator.person.last_name}}</td>
-          <td><a href="{% url 'medical-certificate' certificate.id %}"> Aquí</a></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% else %}
-    <p>There are medical certificates available.</p>
-    {% endif %} 
+ <!-- Breadcrumb Section Begin -->
+ <div class="breacrumb-section">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="breadcrumb-text">
+                  <a href="#"><i class="fa fa-home"></i> Principal</a>
+                  <span>Consulta</span>
+              </div>
+          </div>
+      </div>
   </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+<!--QUERY-->
+<div class="container">
+  <div class="row">
+    <div class="col m-3">
+      <h3>Consulta de Certificados</h3>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col m-3">
+        <form class="form-inline" method="POST" action="{% url 'manipulator' %}">
+          {% csrf_token %}
+          <div class="form-group mb-2 w-100 col-sm-7">
+            <input name="searched" id="searched" type="text" class="form-control w-100" placeholder="Escriba el número de Identificación a Consultar">
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+        </form>
+      </div>
+    </div>
+</div>
 
-  <div class="bd-manipulator">
-    {% if assistanceList %}
-    <h3>Certificados de Asistencia</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Fecha</th> 
-          <th scope="col">Nombre del Manipulador</th> 
-          <th scope="col">Opciones</th> 
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {% for certificate in assistanceList %}
-          <th scope="row">{{certificate.id}}</th>
-          <td>{{certificate.date}}</td>
-          <td>{{certificate.assistance.assistance.person.name}} {{certificate.assistance.assistance.person.last_name}}</td>
-          <td><a href="{% url 'certificate-letter' certificate.id %}"> Aquí</a></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% else %}
-    <p>There are assistance certificates available.</p>
-    {% endif %} 
+ <!-- TABLE-->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        {% if assistanceList and carnetList and medicalList %}
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">Documento</th>
+              <th class="text-center">Fecha</th> 
+              <th class="text-center">Nombre</th> 
+              <th class="text-center">Certificado Medico</th>
+              <th class="text-center">Certificado de Asistencia</th>
+              <th class="text-center">Carnet</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if searched %}
+              {% for certificate in assistanceList %}
+                {% if searched in certificate.assistance.assistance.person.identification %}
+                  <tr>
+                    <th class="text-center">{{certificate.assistance.assistance.person.identification}} </th>
+                    <th class="text-center">{{certificate.date}}</th> 
+                    <th class="text-center">{{certificate.assistance.assistance.person.name}} {{certificate.assistance.assistance.person.last_name}}</th> 
+                    <th class="text-center"><a target="_blank" href="{% url 'medical-certificate' certificate.consecutive %}">Visualizar <i class="fa fa-external-link"></i></a></th>
+                    <th class="text-center"><a target="_blank" href="{% url 'certificate-letter' certificate.consecutive %}">Visualizar <i class="fa fa-external-link"></i></a></th>
+                    <th class="text-center"><a target="_blank" href="{% url 'cma-carnet' certificate.consecutive %}">Visualizar <i class="fa fa-external-link"></i></a></th>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+                p>There are medical certificates available.</p>
+            {% endif %}
+          </tbody>
+        </table>
+        {% endif %} 
+      </div>
+    </div>
   </div>
-
-  <div class="bd-manipulator">
-    {% if carnetList %}
-    <h3>Carnets</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Fecha</th> 
-          <th scope="col">Nombre del Manipulador</th> 
-          <th scope="col">Opciones</th> 
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {% for certificate in carnetList %}
-          <th scope="row">{{certificate.consecutive}}</th>
-          <td>{{certificate.date}}</td>
-          <td>{{certificate.medicalcertificate.manipulator.person.name}} {{certificate.medicalcertificate.manipulator.person.last_name}}</td>
-          <td><a href="{% url 'cma-carnet' certificate.consecutive %}"> Aquí</a></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% else %}
-    <p>There are assistance certificates available.</p>
-    {% endif %} 
-  </div>
-</ul>
 {% endblock %}
