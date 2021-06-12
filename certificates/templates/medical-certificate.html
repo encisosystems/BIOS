@@ -8,15 +8,14 @@
 
 {% block content %}
 
-    <div class="container border border-primary mt-3 rounded">
+    <div class="container border border-dark mt-3 rounded">
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
             <div class="col-sm-5 logo mt-2">
                 <img src="{% static 'img/logo.png' %}" width="200px"/>
             </div>
-            <div class="col-sm-7 mt-2">
-                <h4 class="justify-content-center">Certificado Médico</h4>
-                <h4>Manipulador de Alimentos</h4>
-                <div class="border border-primary text-center rounded mt-2 bg-light" class="bg-light">
+            <div class="col-sm-7 mt-2 text-center">
+                <h4 class="font-weight-bold text-uppercase justify-content-center">Certificado Médico <br/>Manipulador de Alimentos</h4>
+                <div class="text-center rounded mt-4 bg-light" class="bg-light">
                     No. {{certificate.consecutive}}
                 </div>
             </div>
@@ -50,7 +49,7 @@
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h3 class="m-1">Información Personal</h3>
+            <h4 class="text-uppercase font-weight-bold m-1">Información Personal</h4>
         </div>
         <div class="row justify-content-center">
 
@@ -92,11 +91,11 @@
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h3>Laboratorios</h3>
+            <h4 class="text-uppercase font-weight-bold m-1">Laboratorios</h4>
         </div>
         <div class="row justify-content-center">
 
-            <div class="col-md-12-center">
+            <div class="col-md-12-center mt-3">
                 {% if tests %}
                 <ol>
                     {% for test in tests %}
@@ -110,18 +109,18 @@
         </div>
 
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h3>Diagnostico médico</h3>
+            <h4 class="text-uppercase font-weight-bold m-1">Diagnostico médico</h4>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-12 mt-3">
                 <p class="mb-5">{{certificate.diagnostic}}</p>
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h3>Diagnostico médico</h3>
+            <h4 class="text-uppercase font-weight-bold m-1">Concepto</h4>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-6 m-3">
                 
                 {% if concepts %}
                 {% for concept in concepts %}
@@ -148,13 +147,16 @@
             </div>
         </div>
     </div>
+    
+    <p class="text-sm-center"><small>En cumplimiento de la resolución 2674 de 2013 articulo 36 parágrafos 1 y 2</small></p>
+
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-12 m-3">
                 <div class="text-center">
                     <img src="/media/{{certificate.entity.official.url}}" class="img-fluid" width="170px" height="100px" />
                     <br/>
-                    <small>Firma del médico</small>
+                    <small class="font-weight-bold">Firma del médico</small>
                 </div>
 
             </div>
