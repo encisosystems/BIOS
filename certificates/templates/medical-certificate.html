@@ -8,16 +8,15 @@
 
 {% block content %}
 
-    <div class="container border border-primary mt-3 rounded">
+    <div class="container border border-dark mt-3 rounded">
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <div class="col-sm-5 logo">
+            <div class="col-sm-5 logo mt-2">
                 <img src="{% static 'img/logo.png' %}" width="200px"/>
             </div>
-            <div class="col-sm-7 ">
-                <h4 class="justify-content-center">Certificado Médico</h4>
-                <h4>Manipulador de Alimentos</h4>
-                <div class="border border-primary text-center rounded" style="background-color: #ffffff;">
-                    No. {{consecutive_number}}
+            <div class="col-sm-7 mt-2 text-center">
+                <h4 class="font-weight-bold text-uppercase justify-content-center">Certificado Médico <br/>Manipulador de Alimentos</h4>
+                <div class="text-center rounded mt-4 bg-light" class="bg-light">
+                  <span class="text-danger font-weight-bold">No.</span> {{certificate.consecutive}}
                 </div>
             </div>
         </div>
@@ -26,11 +25,11 @@
                 <div class="d-flex flex-column mb-10 mb-md-0">
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Empresa:</span>
-                        <span class="text-right">Company name</span>
+                        <span class="text-right">{{certificate.manipulator.entity.name}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Fecha:</span>
-                        <span class="text-right">18 / 11 / 20</span>
+                        <span class="text-right">{{certificate.date}}</span>
                     </div>
                 </div>
             </div>
@@ -39,18 +38,18 @@
                     <div class="d-flex flex-column mb-10 mb-md-0">
                         <div class="d-flex justify-content-between mb-3">
                             <span class="mr-15 font-weight-bold">Ciudad:</span>
-                            <span class="text-right">City</span>
+                            <span class="text-right">{{certificate.manipulator.person.city}}</span>
                         </div>
                         <div class="d-flex justify-content-between mb-3">
-                            <span class="mr-15 font-weight-bold">Depto:</span>
-                            <span class="text-right"> Dpto</span>
+                            <span class="mr-15 font-weight-bold"></span>
+                            <span class="text-right"> </span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h2 class="m-1">Información Personal</h2>
+            <h4 class="text-uppercase font-weight-bold m-1">Información Personal</h4>
         </div>
         <div class="row justify-content-center">
 
@@ -58,19 +57,19 @@
                 <div class="d-flex flex-column mb-10 mb-md-0">
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Nombres y Apellidos:</span>
-                        <span class="text-right">Full name</span>
+                        <span class="text-right">{{certificate.manipulator.person.name}} {{certificate.manipulator.person.last_name}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="mr-15 font-weight-bold">Doc Identidad:</span>
-                        <span class="text-right">identification card</span>
+                        <span class="mr-15 font-weight-bold">Tipo de Documento:</span>
+                        <span class="text-right">{{certificate.manipulator.person.type_document}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="mr-15 font-weight-bold">Edad:</span>
-                        <span class="text-right">age</span>
+                        <span class="mr-15 font-weight-bold">Email:</span>
+                        <span class="text-right">{{certificate.manipulator.person.email}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Teléfono:</span>
-                        <span class="text-right">Phone</span>
+                        <span class="text-right">{{certificate.manipulator.person.phone}}</span>
                     </div>
                 </div>
             </div>
@@ -78,107 +77,86 @@
                 <div class="d-flex flex-column mb-10 mb-md-0">
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Cargo:</span>
-                        <span class="text-right">Position</span>
+                        <span class="text-right">{{certificate.manipulator.person.job}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span class="mr-15 font-weight-bold">Doc Identidad:</span>
-                        <span class="text-right">identification card</span>
+                        <span class="mr-15 font-weight-bold">Documento de Identidad:</span>
+                        <span class="text-right">{{certificate.manipulator.person.identification}}</span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span class="mr-15 font-weight-bold">Dirección:</span>
-                        <span class="text-right">Address</span>
+                        <span class="text-right">{{certificate.manipulator.person.address}}</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h2>Laboratorios</h2>
+            <h4 class="text-uppercase font-weight-bold m-1">Laboratorios</h4>
         </div>
         <div class="row justify-content-center">
 
-            <div class="col-md-12">
+            <div class="col-md-12-center mt-3">
+                {% if tests %}
                 <ol>
-                    <li>Coprologico</li>
-                    <li>Frotis faringeo</li>
-                    <li>KOH Nails</li>
+                    {% for test in tests %}
+                    <li>{{test.typetest.name}} <b>{{test.result}}</b></li>
+                    {% endfor %}
                 </ol>
+                {% else %}
+                <p>There are test available.</p>
+                {% endif %} 
             </div>
         </div>
-        <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h2>Diagnostico médico</h2>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <p class="mb-5"> description field</p>
-            </div>
-        </div>
-        <div class="row justify-content-center" style="background-color: #DAEDFB;">
-            <h2>Diagnostico médico</h2>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <!--TODO: Write a function that iterate an object array-->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto sin restricción
-                    </label>
-                </div>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto con restricción que no interfiere en la Labor
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto para trabajar en alturas
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto para manipulación de alimentos
-                    </label>
-                </div>
+        <div class="row justify-content-center" style="background-color: #DAEDFB;">
+            <h4 class="text-uppercase font-weight-bold m-1">Diagnostico médico</h4>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-12 mt-3">
+                <p class="mb-5">{{certificate.diagnostic}}</p>
             </div>
-            <div class="col-md-6">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Examen de retiro satisfactorio
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Examen de retiro no satisfactorio
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Apto con restricciones que no interfieren en la labor
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Aplazado
-                    </label>
-                </div>
+        </div>
+        <div class="row justify-content-center" style="background-color: #DAEDFB;">
+            <h4 class="text-uppercase font-weight-bold m-1">Concepto</h4>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 m-3">
+                
+                {% if concepts %}
+                {% for concept in concepts %}
+                    {% if certificate.id == concept.code %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
+                        <label class="form-check-label" for="defaultCheck1">
+                            {{concept.name}}
+                        </label>
+                    </div> 
+                    {% else %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            {{concept.name}}
+                        </label>
+                    </div> 
+                    {% endif %} 
+                {% endfor %}
+               
+                {% else %}
+                <p>There are Concepts available.</p>
+                {% endif %}   
             </div>
         </div>
     </div>
+    
+    <p class="text-sm-center"><small>En cumplimiento de la resolución 2674 de 2013 articulo 36 parágrafos 1 y 2</small></p>
+
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-12 m-3">
                 <div class="text-center">
-                    <img src="images/firma.png" class="img-fluid" width="170px" height="100px" />
+                    <img src="/media/{{certificate.entity.official.url}}" class="img-fluid" width="170px" height="100px" />
                     <br/>
-                    <small>Firma del médico</small>
+                    <small class="font-weight-bold">Firma del médico</small>
                 </div>
 
             </div>

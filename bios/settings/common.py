@@ -37,7 +37,7 @@ DEPENDENCIES_APPS = [
 PROJECT_APPS = [
     'main',
     'shop',
-    'cms',
+    # 'cms',
     'certificates',
 ]
 
