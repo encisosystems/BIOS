@@ -829,7 +829,7 @@ ol {
 }
 
 .hero-items .single-hero-items {
-	height: 20em;
+	height: 25em;
 	padding-top: 210px;
 }
 
@@ -2637,7 +2637,7 @@ ol {
 }
 
 .cart-table table tr th.p-name {
-	text-align: left;
+	text-align: center;
 }
 
 .cart-table table tr td {
@@ -2646,15 +2646,17 @@ ol {
 }
 
 .cart-table table tr td.first-row {
-	padding-top: 30px;
+	padding-left: 10px;
 }
 
 .cart-table table tr td.cart-pic {
-	width: 21%;
+	width: 11em;
+  height: 11em;
+  padding-left: 2em;
 }
 
 .cart-table table tr td.cart-title {
-	text-align: left;
+	text-align: center;
 }
 
 .cart-table table tr td.cart-title h5 {
