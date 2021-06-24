@@ -25,7 +25,7 @@
         <form class="form-inline" method="POST" action="{% url 'manipulator' %}">
           {% csrf_token %}
           <div class="form-group mb-2 w-100 col-sm-7">
-            <input name="searched" id="searched" type="text" class="form-control w-100" placeholder="Escriba el número de Identificación a Consultar">
+            <input name="searched" id="searched" type="number" class="form-control w-100" placeholder="Escriba el número de Identificación a Consultar">
           </div>
           <button type="submit" class="btn btn-primary mb-2">Buscar</button>
         </form>
@@ -38,36 +38,36 @@
     <div class="row">
       <div class="col">
         {% if assistanceList and carnetList and medicalList %}
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th class="text-center">Documento</th>
-              <th class="text-center">Fecha</th> 
-              <th class="text-center">Nombre</th> 
-              <th class="text-center">Certificado Medico</th>
-              <th class="text-center">Certificado de Asistencia</th>
-              <th class="text-center">Carnet</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% if searched %}
-              {% for certificate in assistanceList %}
-                {% if searched in certificate.assistance.assistance.person.identification %}
+          {% if searched %}
+              <table class="table table-striped">
+                <thead>
                   <tr>
-                    <th class="text-center">{{certificate.assistance.assistance.person.identification}} </th>
-                    <th class="text-center">{{certificate.date}}</th> 
-                    <th class="text-center">{{certificate.assistance.assistance.person.name}} {{certificate.assistance.assistance.person.last_name}}</th> 
-                    <th class="text-center"><a target="_blank" href="{% url 'medical-certificate' certificate.consecutive %}">Visualizar <i class="fa fa-external-link"></i></a></th>
-                    <th class="text-center"><a target="_blank" href="{% url 'certificate-letter' certificate.consecutive %}">Visualizar <i class="fa fa-external-link"></i></a></th>
-                    <th class="text-center"><a target="_blank" href="{% url 'cma-carnet' certificate.consecutive %}">Visualizar <i class="fa fa-external-link"></i></a></th>
+                    <th class="text-center">Documento</th>
+                    <th class="text-center">Fecha</th> 
+                    <th class="text-center">Nombre</th> 
+                    <th class="text-center">Certificado Medico</th>
+                    <th class="text-center">Certificado de Asistencia</th>
+                    <th class="text-center">Carnet</th>
                   </tr>
-                {% endif %}
-              {% endfor %}
-            {% else %}
-                p>There are medical certificates available.</p>
-            {% endif %}
-          </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for certificate in assistanceList %}
+                      {% if searched in certificate.assistance.assistance.person.identification %}
+                        <tr>
+                          <th class="text-center">{{certificate.assistance.assistance.person.identification}} </th>
+                          <th class="text-center">{{certificate.date}}</th> 
+                          <th class="text-center">{{certificate.assistance.assistance.person.name}} {{certificate.assistance.assistance.person.last_name}}</th> 
+                          <th class="text-center"><a target="_blank" href="{% url 'medical-certificate' certificate.consecutive %}">Visualizar <i class="fa fa-external-link"></i></a></th>
+                          <th class="text-center"><a target="_blank" href="{% url 'certificate-letter' certificate.consecutive %}">Visualizar <i class="fa fa-external-link"></i></a></th>
+                          <th class="text-center"><a target="_blank" href="{% url 'cma-carnet' certificate.consecutive %}">Visualizar <i class="fa fa-external-link"></i></a></th>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+                  {% elif searched == "" %}
+                      <p>Por favor ingrese un número de identificación para realizar la consulta</p>
+                  {% endif %}
+                </tbody>
+              </table>
         {% endif %} 
       </div>
     </div>
